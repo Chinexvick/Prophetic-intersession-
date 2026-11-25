@@ -5,9 +5,9 @@
    ===================================================================== */
 
 var PI_SITE = {
-  whatsapp: "https://chat.whatsapp.com/L8ikJexNYyWISJi5p15JfF", // from the QR code on the 24hr Prayer Stretch flier
+  whatsapp: "https://chat.whatsapp.com/Fed6pLcGBTfJ7N0FmaZfYB",
   youtube: "https://www.youtube.com/@PropheticAndIntercession",
-  tiktok: "",       // e.g. "https://www.tiktok.com/@propheticintercession"
+  tiktok: "https://www.tiktok.com/@propheticandintercession",
   zoom: "",         // standing Zoom link, if there is one
   contactEmail: ""  // where prayer requests, testimonies and watch sign-ups are emailed
 };
@@ -57,17 +57,51 @@ var PI_MEDIA = [
     date: "2026-11-06",
     image: "assets/img/flyer-24hr-prayer-stretch.jpg",
     text: "Fri. Nov 13th – Sat. Nov 14th, 2026 on Zoom · Psalm 85:6"
-  },
-  {
-    type: "flyer",
-    title: "Partner with Prophetic Intercession",
-    date: "2026-11-01",
-    image: "assets/img/flyer-partner.jpg",
-    text: "Support the ministry through MTN MoMo, Zelle or BNB / USDT (BEP-20)."
   }
   // , { type: "video", title: "Message title", date: "2026-12-01", youtube: "VIDEO_ID", text: "Short description" }
   // , { type: "video", title: "TikTok live replay", date: "2026-12-01", url: "https://www.tiktok.com/@.../video/...", image: "assets/img/thumb.jpg" }
   // , { type: "message", title: "Message title", date: "2026-12-01", text: "Full message text…" }
+];
+
+/* GALLERY — photos live in assets/img/gallery/ (gNN.jpg large, gNN-sm.jpg small) */
+var PI_GALLERY = [
+  { n: "01", caption: "In intercession" },
+  { n: "02", caption: "Releasing the Word" },
+  { n: "03", caption: "Open-armed worship" },
+  { n: "04", caption: "Leading in worship" },
+  { n: "05", caption: "Preaching the Word" },
+  { n: "06", caption: "Praying over the Scriptures" },
+  { n: "07", caption: "Ministering" },
+  { n: "08", caption: "Fervent prayer" },
+  { n: "09", caption: "Teaching" },
+  { n: "10", caption: "Prophetic teaching" },
+  { n: "11", caption: "Lost in worship" },
+  { n: "12", caption: "Declaring the Word" },
+  { n: "13", caption: "In the place of prayer" },
+  { n: "14", caption: "Prophetic Intercessor — founder & host" }
+];
+
+/* GIVING — the methods shown in the giving engine on give.html */
+var PI_GIVING = [
+  {
+    id: "momo", label: "MTN MoMo", sub: "Mobile Money · Cameroon", theme: "momo",
+    fieldLabel: "MoMo number", value: "+237 682 933 824", copy: "+237682933824",
+    name: "Ndi Richard", currency: "XAF", amounts: [5000, 10000, 25000, 50000],
+    steps: ["Open your MTN MoMo app or the MoMo menu on your phone.", "Choose Transfer → to a MoMo user.", "Enter the number above and confirm the name shows Ndi Richard.", "Enter your amount, confirm with your PIN and send."]
+  },
+  {
+    id: "zelle", label: "Zelle", sub: "Bank transfer · USA", theme: "zelle",
+    fieldLabel: "Zelle phone number", value: "+1 (202) 509-6004", copy: "+12025096004",
+    name: "Alambeh", currency: "USD", amounts: [20, 50, 100, 250],
+    steps: ["Open your banking app and go to Zelle.", "Send money to the phone number above.", "Check that the recipient name shows Alambeh.", "Enter your amount and send."]
+  },
+  {
+    id: "crypto", label: "BNB / USDT", sub: "Crypto · BEP-20 (BNB Smart Chain)", theme: "crypto",
+    fieldLabel: "Wallet address (BEP-20)", value: "0xDa8Eb0767eAA65009fc13db0e2027baf2353f94A", copy: "0xDa8Eb0767eAA65009fc13db0e2027baf2353f94A",
+    name: "", currency: "USDT", amounts: [10, 25, 50, 100], qr: true,
+    warning: "Send only BNB or USDT on the BEP-20 (BNB Smart Chain) network. Funds sent on another network cannot be recovered.",
+    steps: ["Open your wallet app (Binance, Trust Wallet, MetaMask…).", "Choose BNB or USDT and select the BEP-20 / BNB Smart Chain network.", "Paste the address above, then check the first and last characters match.", "Send and keep your transaction hash for your records."]
+  }
 ];
 
 /* TESTIMONIES — only add testimonies shared with permission. */

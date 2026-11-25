@@ -4,7 +4,7 @@ R = str(pathlib.Path(__file__).resolve().parent.parent)
 
 NAV = [("index.html", "Home"), ("about.html", "About"), ("prayer.html", "Prayer"),
        ("prophetic.html", "Prophetic"), ("channels.html", "Channels"), ("events.html", "Events"),
-       ("media.html", "Media"), ("testimonies.html", "Testimonies")]
+       ("media.html", "Media"), ("gallery.html", "Gallery"), ("testimonies.html", "Testimonies")]
 
 WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.96-3.48-.23-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.21-4.24 9.44-9.44 9.44m8.04-17.48A11.3 11.3 0 0 0 12.05.7C5.78.7.68 5.8.68 12.06c0 2 .52 3.96 1.52 5.68L.58 23.7l6.1-1.6a11.36 11.36 0 0 0 5.37 1.37h.01c6.26 0 11.36-5.1 11.36-11.37 0-3.03-1.18-5.89-3.33-8.03"/></svg>'
 YT_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg>'
@@ -77,6 +77,11 @@ FOOTER = '''<footer class="site-footer">
         <img src="assets/img/logo.png" alt="Prophetic Intercession logo" width="72" height="72">
         <p class="tag">Raising a Tribe. Birthing Revival. Transforming Nations.</p>
         <p>A global interdenominational ministry — a people upon the watch, a people consecrated to the altar.</p>
+        <div class="socials">
+          <a data-link="whatsapp" href="channels.html" aria-label="WhatsApp">''' + WA_ICON + '''</a>
+          <a data-link="youtube" href="channels.html" aria-label="YouTube">''' + YT_ICON + '''</a>
+          <a data-link="tiktok" href="channels.html" aria-label="TikTok">''' + TT_ICON + '''</a>
+        </div>
       </div>
       <div>
         <h4>Ministry</h4>
@@ -95,6 +100,7 @@ FOOTER = '''<footer class="site-footer">
           <li><a href="prayer.html">Prayer Requests</a></li>
           <li><a href="channels.html">Our Channels</a></li>
           <li><a href="media.html">Media &amp; Flyers</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
           <li><a href="give.html">Partner &amp; Give</a></li>
         </ul>
       </div>
@@ -118,12 +124,14 @@ FOOTER = '''<footer class="site-footer">
 
 def page(fname, title, desc, body, extra_js=""):
     html = (head(title, desc) + "\n<body>\n" + header(fname) + "\n<main>\n" + body.strip() + "\n</main>\n" + FOOTER +
-            "\n" + extra_js + '<script src="assets/js/content.js"></script>\n<script src="assets/js/main.js"></script>\n</body>\n</html>\n')
+            "\n" + extra_js + '<script src="assets/js/content.js"></script>\n<script src="assets/js/engine.js"></script>\n<script src="assets/js/main.js"></script>\n</body>\n</html>\n')
     with open(os.path.join(R, fname), "w") as f:
         f.write(html)
 
 
-def page_hero(img, eyebrow, title, text, pos="center"):
+def page_hero(img, eyebrow, title, text, pos=None):
+    if pos is None:
+        pos = "center 28%" if img.startswith("gallery/") else "center"
     return f'''<section class="page-hero">
   <img src="assets/img/{img}" alt="" style="object-position:{pos}">
   <div class="container">
@@ -177,12 +185,12 @@ home = f'''
     <div class="carousel reveal">
       <div class="track">
         <a class="feature-card" href="events.html">
-          <img src="assets/img/prayer-hands.jpg" alt="" loading="lazy">
+          <img src="assets/img/gallery/g08-sm.jpg" alt="" loading="lazy" style="object-position:center 30%">
           <div><span class="label">Nov 13 – 14 · Recent</span><h3>24 Hours Prayer Stretch</h3></div>
           <span class="more">Learn more</span>
         </a>
         <a class="feature-card" href="events.html">
-          <img src="assets/img/worship-night.jpg" alt="" loading="lazy">
+          <img src="assets/img/gallery/g03-sm.jpg" alt="" loading="lazy" style="object-position:center 30%">
           <div><span class="label">Coming soon</span><h3>Next Prayer Gathering</h3></div>
           <span class="more">See upcoming</span>
         </a>
@@ -197,7 +205,7 @@ home = f'''
           <span class="more">Learn more</span>
         </a>
         <a class="feature-card" href="prophetic.html">
-          <img src="assets/img/bible.jpg" alt="" loading="lazy">
+          <img src="assets/img/gallery/g05-sm.jpg" alt="" loading="lazy" style="object-position:center 30%">
           <div><span class="label">Prophetic</span><h3>Word for the Week</h3></div>
           <span class="more">Read the word</span>
         </a>
@@ -205,6 +213,11 @@ home = f'''
           <img src="assets/img/flyer-24hr-prayer-stretch.jpg" alt="" loading="lazy" style="object-position:center 85%">
           <div><span class="label">Media</span><h3>Flyers &amp; Videos</h3></div>
           <span class="more">Browse media</span>
+        </a>
+        <a class="feature-card" href="gallery.html">
+          <img src="assets/img/gallery/g14-sm.jpg" alt="" loading="lazy" style="object-position:center 25%">
+          <div><span class="label">Gallery</span><h3>Moments in Ministry</h3></div>
+          <span class="more">View gallery</span>
         </a>
         <a class="feature-card" href="give.html">
           <img src="assets/img/giving.jpg" alt="" loading="lazy">
@@ -332,9 +345,16 @@ home = f'''
   </div>
 </section>
 
+<section class="gallery-band">
+  <div class="container">
+    <div class="section-head reveal"><h2>Gallery</h2><a class="btn btn-outline-dark" href="gallery.html">View gallery</a></div>
+  </div>
+  <div class="marquee reveal" data-marquee></div>
+</section>
+
 <section class="founder-band">
   <div class="container grid">
-    <div class="founder-photo reveal"><img src="assets/img/founder.jpg" alt="The founder of Prophetic Intercession" loading="lazy"><span class="pin">Host · Prophetic Intercessor</span></div>
+    <div class="founder-photo reveal"><img src="assets/img/gallery/g14.jpg" alt="Prophetic Intercessor ministering in prayer" loading="lazy" style="object-position:center 18%"><span class="pin">Host · Prophetic Intercessor</span></div>
     <div class="founder-copy">
       <div class="founder-card reveal">
         <span class="eyebrow">Ministry leadership</span>
@@ -363,10 +383,13 @@ home = f'''
         <span class="eyebrow">Support the ministry</span>
         <h2>Partner with Prophetic Intercession</h2>
         <p>Every seed you sow fuels prayer, outreach to prisons and rural communities, and the orphanage we are building. Give from anywhere in the world.</p>
-        <div class="chips"><span class="chip">MTN MoMo</span><span class="chip">Zelle</span><span class="chip">BNB / USDT (BEP-20)</span></div>
         <a class="btn btn-gold" href="give.html">Give now</a>
       </div>
-      <div class="visual"><img src="assets/img/flyer-partner.jpg" alt="Partner with Prophetic Intercession flier"></div>
+      <div class="promo-methods">
+        <a href="give.html#momo"><span class="ge-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#ffcb05"/><ellipse cx="24" cy="24" rx="17" ry="10.5" fill="none" stroke="#00487a" stroke-width="2.6"/><text x="24" y="28.5" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="11.5" fill="#00487a">MTN</text></svg></span><span><strong>MTN MoMo</strong><small>Mobile Money · Cameroon</small></span><span class="arrow">→</span></a>
+        <a href="give.html#zelle"><span class="ge-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#6d1ed4"/><path d="M16 15h16v4.2L21.6 30H32v4H16v-4.2L26.4 19H16z" fill="#fff"/><rect x="22.6" y="10.5" width="2.8" height="5.5" fill="#fff"/><rect x="22.6" y="32" width="2.8" height="5.5" fill="#fff"/></svg></span><span><strong>Zelle</strong><small>Bank transfer · USA</small></span><span class="arrow">→</span></a>
+        <a href="give.html#crypto"><span class="ge-logo"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#111"/><g fill="#f0b90b"><path d="M24 11l4.2 4.2-4.2 4.2-4.2-4.2z"/><path d="M24 28.6l4.2 4.2L24 37l-4.2-4.2z"/><path d="M15.2 19.8l4.2 4.2-4.2 4.2L11 24z"/><path d="M32.8 19.8L37 24l-4.2 4.2-4.2-4.2z"/><path d="M24 19.8l4.2 4.2-4.2 4.2-4.2-4.2z"/></g></svg></span><span><strong>BNB / USDT</strong><small>Crypto · BEP-20</small></span><span class="arrow">→</span></a>
+      </div>
     </div>
   </div>
 </section>
@@ -391,7 +414,7 @@ about = page_hero("vision-sunrise.jpg", "A global interdenominational ministry",
       <p>What began as a burden to pray for people has grown into a greater mandate: raising a global prophetic and intercessory tribe equipped to discern the heart of God, birth His purposes through prayer and become instruments of divine intervention in their generation.</p>
       <div class="hero-row mt-2"><a class="btn btn-gold" href="founder.html">Meet our founder</a><a class="btn btn-outline-dark" href="outreach.html">Our outreach</a></div>
     </div>
-    <div class="img-accent reveal"><div class="img-frame tall"><img src="assets/img/prayer-hands.jpg" alt="Hands raised in worship" loading="lazy"></div></div>
+    <div class="img-accent reveal"><div class="img-frame tall"><img src="assets/img/gallery/g01.jpg" alt="Prophetic Intercessor in intercession" loading="lazy" style="object-position:center 30%"></div></div>
   </div>
 </section>
 
@@ -478,7 +501,7 @@ page("about.html", "About Us — Prophetic Intercession",
 founder = '''
 <section class="founder-band" style="padding-top:76px">
   <div class="container grid">
-    <div class="founder-photo reveal"><img src="assets/img/founder.jpg" alt="The founder of Prophetic Intercession"><span class="pin">Host · Prophetic Intercessor</span></div>
+    <div class="founder-photo reveal"><img src="assets/img/gallery/g14.jpg" alt="Prophetic Intercessor ministering in prayer" style="object-position:center 18%"><span class="pin">Host · Prophetic Intercessor</span></div>
     <div class="founder-copy">
       <div class="founder-card reveal">
         <span class="eyebrow">Our founder</span>
@@ -503,7 +526,7 @@ founder = '''
       <p>Her foundational conviction is simple: <strong>everything by priesthood</strong>. The ministry seeks God first, listens for His voice, and then goes — carrying hope to prisoners, rural communities and children in need of a home.</p>
       <a class="btn btn-yt" data-link="youtube" href="media.html">Watch on YouTube</a>
     </div>
-    <div class="img-accent reveal"><div class="img-frame"><img src="assets/img/bible.jpg" alt="An open Bible" loading="lazy"></div></div>
+    <div class="img-accent reveal"><div class="img-frame"><img src="assets/img/gallery/g06.jpg" alt="Prophetic Intercessor praying over the open Scriptures" loading="lazy" style="object-position:center 30%"></div></div>
   </div>
 </section>
 
@@ -520,7 +543,7 @@ founder = '''
         <div class="tl-item progress"><h3>Orphanage — in progress</h3><p>We are working toward a loving home for orphaned children.</p></div>
         <div class="tl-item future"><h3>Hospitals &amp; schools — the future</h3><p>A vision for healing and education in the communities we serve.</p></div>
       </div>
-      <div class="img-frame tall reveal"><img src="assets/img/orphanage.jpg" alt="Children smiling together" loading="lazy"></div>
+      <div class="img-frame tall reveal"><img src="assets/img/gallery/g11.jpg" alt="Prophetic Intercessor lost in worship" loading="lazy" style="object-position:center 30%"></div>
     </div>
   </div>
 </section>
@@ -644,52 +667,31 @@ page("events.html", "Events — Prophetic Intercession",
      '<script src="assets/js/events.js"></script>\n')
 
 # ======================= GIVE =======================
-give = page_hero("giving.jpg", "Partner with us", "Support the ministry",
-                 "If you would like to give to support the ministry, please use any of the giving options below. Thank you for partnering with us!") + '''
+SHIELD = ICON["shield"]
+give = page_hero("giving.jpg", "Partner with us", "Sow into the ministry",
+                 "Choose how you would like to give. Your details appear instantly with step-by-step guidance. Thank you for partnering with us!") + f'''
 <section class="section bg-blush">
-  <div class="container grid-2" style="align-items:start">
-    <div>
-      <div class="give-card reveal">
-        <div class="give-logo momo">MTN<small>MoMo</small></div>
-        <div class="give-body">
-          <div class="label">MTN MoMo Transfer</div>
-          <div class="give-value">+237 682 933 824</div>
-          <div class="give-name">Name: Ndi Richard</div>
-          <button class="copy-btn" data-copy="+237682933824">Copy number</button>
-        </div>
+  <div class="container">
+    <div class="give-engine" id="give-engine" data-theme="momo">
+      <div>
+        <p class="ge-step"><b>1</b> Choose a giving method</p>
+        <div class="ge-methods" role="tablist" aria-label="Giving methods"></div>
+        <p class="ge-trust">{SHIELD}<span>Always confirm the account name before sending. Prophetic Intercession will never ask you for your PIN or password.</span></p>
       </div>
-      <div class="give-card reveal">
-        <div class="give-logo zelle">Zelle</div>
-        <div class="give-body">
-          <div class="label">Zelle</div>
-          <div class="give-value">+1 (202) 509-6004</div>
-          <div class="give-name">Name: Alambeh</div>
-          <button class="copy-btn" data-copy="+12025096004">Copy number</button>
-        </div>
+      <div>
+        <p class="ge-step"><b>2</b> Send your seed</p>
+        <div class="ge-panel" aria-live="polite"></div>
       </div>
-      <div class="give-card reveal">
-        <div class="give-logo binance">BINANCE<small>BNB · USDT</small></div>
-        <div class="give-body">
-          <div class="label">BNB or USDT · BEP-20 (BNB Smart Chain)</div>
-          <div class="give-value mono">0xDa8Eb0767eAA65009fc13db0e2027baf2353f94A</div>
-          <div class="give-name">Send only on the BEP-20 network.</div>
-          <button class="copy-btn" data-copy="0xDa8Eb0767eAA65009fc13db0e2027baf2353f94A">Copy address</button>
-        </div>
-      </div>
-      <p class="note mt-2 reveal">Please double-check the number or wallet address before sending. Crypto sent on the wrong network cannot be recovered.</p>
-    </div>
-    <div class="reveal">
-      <div class="img-frame"><img src="assets/img/flyer-partner.jpg" alt="Partner with Prophetic Intercession flier with giving details" loading="lazy" style="aspect-ratio:3/4"></div>
     </div>
   </div>
 </section>
 
-<section class="section">
+<section class="section give-seed">
   <div class="container">
     <div class="section-head reveal"><h2>Where your seed goes</h2></div>
     <div class="grid-4">
-      <article class="ministry-card reveal"><div class="media"><img src="assets/img/prayer-hands.jpg" alt="" loading="lazy"></div><div class="body"><h3>Prayer gatherings</h3><p class="sub">Hosting prayer meetings and prayer stretches for intercessors worldwide.</p></div></article>
-      <article class="ministry-card reveal"><div class="media"><img src="assets/img/prison-outreach.jpg" alt="" loading="lazy"></div><div class="body"><h3>Prison outreach</h3><p class="sub">Taking hope and practical care to those behind bars.</p></div></article>
+      <article class="ministry-card reveal"><div class="media"><img src="assets/img/gallery/g08-sm.jpg" alt="" loading="lazy" style="object-position:center 30%"></div><div class="body"><h3>Prayer gatherings</h3><p class="sub">Prayer stretches on Zoom and live prayer on YouTube and TikTok.</p></div></article>
+      <article class="ministry-card reveal"><div class="media"><img src="assets/img/prison-outreach.jpg" alt="" loading="lazy"></div><div class="body"><h3>Prison outreach</h3><p class="sub">Taking hope and practical care behind prison walls in Douala, Cameroon.</p></div></article>
       <article class="ministry-card reveal"><div class="media"><img src="assets/img/rural-missions.jpg" alt="" loading="lazy"></div><div class="body"><h3>Rural missions</h3><p class="sub">Supporting the Gospel in remote communities.</p></div></article>
       <article class="ministry-card reveal"><div class="media"><img src="assets/img/orphanage.jpg" alt="" loading="lazy"></div><div class="body"><h3>The orphanage</h3><p class="sub">Building a home for children who need a family.</p></div></article>
     </div>
@@ -705,12 +707,24 @@ give = page_hero("giving.jpg", "Partner with us", "Support the ministry",
 </section>
 '''
 page("give.html", "Give — Prophetic Intercession",
-     "Partner with Prophetic Intercession through MTN MoMo, Zelle or BNB/USDT (BEP-20).", give)
-print("built")
+     "Partner with Prophetic Intercession through MTN MoMo, Zelle or BNB / USDT (BEP-20).", give,
+     '<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js" defer></script>\n')
+
+# ======================= GALLERY =======================
+gallery = page_hero("gallery/g02.jpg", "Gallery", "Moments in ministry",
+                    "Prayer, worship and the preaching of the Word — moments from the ministry of Prophetic Intercession.") + '''
+<section class="section">
+  <div class="container">
+    <div class="gallery-grid" id="gallery-grid"></div>
+  </div>
+</section>
+''' + CTA
+page("gallery.html", "Gallery — Prophetic Intercession",
+     "Photos from the ministry of Prophetic Intercession: prayer, worship and the preaching of the Word.", gallery)
 
 # ======================= PRAYER =======================
 HOURS = "".join(f'<option>{h:02d}:00 – {(h + 1) % 24:02d}:00 WAT</option>' for h in range(24))
-prayer = page_hero("prayer-hands.jpg", "Prayer", "Request, join and watch with us",
+prayer = page_hero("gallery/g13.jpg", "Prayer", "Request, join and watch with us",
                    "Share your prayer request, take a watch on the altar, and pray with intercessors across the nations — day and night.") + f'''
 <section class="section bg-blush">
   <div class="container grid-2" style="align-items:start">
@@ -802,7 +816,7 @@ with open(os.path.join(R, "connect.html"), "w") as f:
             '<body><a href="prayer.html">Continue to the Prayer page</a></body></html>\n')
 
 # ======================= PROPHETIC =======================
-prophetic = page_hero("bible.jpg", "Prophetic", "What God is saying",
+prophetic = page_hero("gallery/g05.jpg", "Prophetic", "What God is saying",
                       "Prophetic words for the week and for the month, released to encourage, direct and build up the body of Christ.") + '''
 <section class="section bg-blush">
   <div class="container">
@@ -823,7 +837,7 @@ page("prophetic.html", "Prophetic Words — Prophetic Intercession",
      "Prophetic words for the week and month from Prophetic Intercession.", prophetic)
 
 # ======================= CHANNELS =======================
-channels = page_hero("worship-night.jpg", "Channels", "Our channels",
+channels = page_hero("gallery/g09.jpg", "Channels", "Our channels",
                      "Our prayers are online — on Zoom, TikTok and YouTube. Join and be part of this global prayer movement.") + f'''
 <section class="section bg-blush">
   <div class="container">
@@ -867,7 +881,7 @@ page("channels.html", "Channels — Prophetic Intercession",
      "Join Prophetic Intercession on WhatsApp, Zoom, TikTok and YouTube.", channels)
 
 # ======================= MEDIA =======================
-media = page_hero("study.jpg", "Media", "Flyers, messages &amp; videos",
+media = page_hero("gallery/g04.jpg", "Media", "Flyers, messages &amp; videos",
                   "Catch up on fliers, prophetic messages and recorded prayer sessions from Prophetic Intercession.") + '''
 <section class="section bg-blush">
   <div class="container">
