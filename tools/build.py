@@ -3,7 +3,7 @@ import pathlib
 R = str(pathlib.Path(__file__).resolve().parent.parent)
 
 NAV = [("index.html", "Home"), ("about.html", "About"), ("prayer.html", "Prayer"),
-       ("prophetic.html", "Prophetic"), ("channels.html", "Channels"), ("events.html", "Events"),
+       ("prophetic.html", "Prophetic Watch"), ("blog.html", "Blog"), ("channels.html", "Channels"), ("events.html", "Events"),
        ("media.html", "Media"), ("gallery.html", "Gallery"), ("testimonies.html", "Testimonies")]
 
 WA_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5h-.01a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.96-3.48-.23-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.21-4.24 9.44-9.44 9.44m8.04-17.48A11.3 11.3 0 0 0 12.05.7C5.78.7.68 5.8.68 12.06c0 2 .52 3.96 1.52 5.68L.58 23.7l6.1-1.6a11.36 11.36 0 0 0 5.37 1.37h.01c6.26 0 11.36-5.1 11.36-11.37 0-3.03-1.18-5.89-3.33-8.03"/></svg>'
@@ -99,6 +99,8 @@ FOOTER = '''<footer class="site-footer">
           <li><a href="events.html">Upcoming Events</a></li>
           <li><a href="prayer.html">Prayer Requests</a></li>
           <li><a href="channels.html">Our Channels</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="prophetic.html">Prophetic Watch</a></li>
           <li><a href="media.html">Media &amp; Flyers</a></li>
           <li><a href="gallery.html">Gallery</a></li>
           <li><a href="give.html">Partner &amp; Give</a></li>
@@ -206,8 +208,8 @@ home = f'''
         </a>
         <a class="feature-card" href="prophetic.html">
           <img src="assets/img/gallery/g05-sm.jpg" alt="" loading="lazy" style="object-position:center 30%">
-          <div><span class="label">Prophetic</span><h3>Word for the Week</h3></div>
-          <span class="more">Read the word</span>
+          <div><span class="label">Prophetic Watch</span><h3>Words &amp; Warnings</h3></div>
+          <span class="more">Read the words</span>
         </a>
         <a class="feature-card" href="media.html">
           <img src="assets/img/flyer-24hr-prayer-stretch.jpg" alt="" loading="lazy" style="object-position:center 85%">
@@ -337,6 +339,13 @@ home = f'''
   </div>
 </section>
 
+<section class="section bg-cream">
+  <div class="container">
+    <div class="section-head reveal"><h2>From the blog</h2><a class="btn btn-outline-dark" href="blog.html">All articles</a></div>
+    <div class="post-grid" id="latest-posts"></div>
+  </div>
+</section>
+
 <section class="section">
   <div class="container">
     <div class="section-head reveal"><h2>Latest on YouTube</h2><a class="btn btn-outline-dark" data-link="youtube" href="media.html">Visit channel</a></div>
@@ -396,7 +405,7 @@ home = f'''
 '''
 page("index.html", "Prophetic Intercession — Praying, Reaching, Transforming Lives",
      "Prophetic Intercession is a global prayer community gathering online on Zoom, TikTok and YouTube, and reaching prisons, rural communities and orphans with the love of Jesus.",
-     home, '<script src="assets/js/events.js"></script>\n')
+     home, '<script src="assets/js/events.js"></script>\n<script src="assets/js/blog.js"></script>\n')
 
 # ======================= ABOUT =======================
 def tile(icon, h, p):
@@ -815,13 +824,29 @@ with open(os.path.join(R, "connect.html"), "w") as f:
             '<meta http-equiv="refresh" content="0; url=prayer.html"><link rel="canonical" href="prayer.html"></head>'
             '<body><a href="prayer.html">Continue to the Prayer page</a></body></html>\n')
 
-# ======================= PROPHETIC =======================
-prophetic = page_hero("gallery/g05.jpg", "Prophetic", "What God is saying",
-                      "Prophetic words for the week and for the month, released to encourage, direct and build up the body of Christ.") + '''
+# ======================= PROPHETIC WATCH =======================
+prophetic = page_hero("gallery/g05.jpg", "Prophetic Watch", "Words &amp; warnings, watched over",
+                      "Prophetic words and warnings released through Prophetic Intercession — published, prayed over and watched until they come to pass.") + '''
+<section class="section-sm">
+  <div class="container grid-2" style="align-items:center">
+    <div class="reveal">
+      <span class="eyebrow">The watchman’s charge</span>
+      <blockquote class="big-quote" style="color:var(--ink)">“Write the vision, and make it plain upon tables, that he may run that readeth it. For the vision is yet for an appointed time… though it tarry, wait for it.”</blockquote>
+      <p class="gold" style="font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.75rem">Habakkuk 2:2–3</p>
+    </div>
+    <div class="status-legend reveal">
+      <div><span class="tag status st-watching">Watching</span><p>Released. We are praying over it and watching for it.</p></div>
+      <div><span class="tag status st-unfolding">Unfolding</span><p>We are seeing it begin to come to pass.</p></div>
+      <div><span class="tag status st-fulfilled">Fulfilled</span><p>It has come to pass — the testimony is recorded in the watch log.</p></div>
+    </div>
+  </div>
+</section>
+
 <section class="section bg-blush">
   <div class="container">
-    <div class="section-head reveal"><h2>Prophetic words</h2></div>
-    <div id="prophetic-words"></div>
+    <div class="section-head reveal"><h2>Words &amp; warnings</h2></div>
+    <div class="filters reveal" id="watch-filters" role="group" aria-label="Filter words"></div>
+    <div class="watch-list" id="prophetic-words"></div>
   </div>
 </section>
 
@@ -833,8 +858,37 @@ prophetic = page_hero("gallery/g05.jpg", "Prophetic", "What God is saying",
   </div>
 </section>
 ''' + CTA
-page("prophetic.html", "Prophetic Words — Prophetic Intercession",
-     "Prophetic words for the week and month from Prophetic Intercession.", prophetic)
+page("prophetic.html", "Prophetic Watch — Prophetic Intercession",
+     "Prophetic words and warnings from Prophetic Intercession, published and watched over until they come to pass.", prophetic)
+
+# ======================= BLOG =======================
+blog = page_hero("gallery/g12.jpg", "Blog", "Articles &amp; stories",
+                 "Teachings, outreach stories, event reports and updates from the Prophetic Intercession family.") + '''
+<section class="section bg-cream">
+  <div class="container">
+    <div class="blog-tools reveal">
+      <div class="filters" id="blog-filters" role="group" aria-label="Filter by category"></div>
+      <label class="blog-search"><span class="sr-only">Search articles</span><input id="blog-search" type="search" placeholder="Search articles…"></label>
+    </div>
+    <div class="post-grid" id="blog-list"></div>
+  </div>
+</section>
+''' + CTA
+page("blog.html", "Blog — Prophetic Intercession",
+     "Articles, teachings and stories from Prophetic Intercession.", blog,
+     '<script src="assets/js/blog.js"></script>\n')
+
+blog_post = '''<article id="post" class="post"></article>
+<section class="section-sm bg-cream">
+  <div class="container">
+    <div class="section-head reveal"><h2>More from the blog</h2><a class="btn btn-outline-dark" href="blog.html">All articles</a></div>
+    <div class="post-grid" id="latest-posts"></div>
+  </div>
+</section>
+''' + CTA
+page("blog-post.html", "Blog — Prophetic Intercession",
+     "An article from the Prophetic Intercession blog.", blog_post,
+     '<script src="assets/js/blog.js"></script>\n')
 
 # ======================= CHANNELS =======================
 channels = page_hero("gallery/g09.jpg", "Channels", "Our channels",

@@ -20,17 +20,42 @@ var PI_FOCUS = {
   text: "“Wilt thou not revive us again: that thy people may rejoice in thee?”"
 };
 
-/* PROPHETIC WORDS — newest first is automatic (sorted by date).
-   period: e.g. "Word for the week" or "Word for the month"         */
+/* PROPHETIC WATCH — words and warnings, published and watched over.
+   kind:   "word" or "warning"
+   status: "watching"  (released, we are watching and praying over it)
+           "unfolding" (we are seeing it begin to come to pass)
+           "fulfilled" (it has come to pass — add the testimony in updates)
+   updates: the watch log — add a dated line whenever something unfolds.
+   youtube: video ID if the word was released on YouTube (optional)
+   image:   flier image (optional)                                      */
 var PI_WORDS = [
-  // {
-  //   title: "Title of the word",
-  //   period: "Word for the month · December 2026",
-  //   date: "2026-12-01",
-  //   image: "assets/img/word-dec-2026.jpg",   // flier, optional
-  //   scripture: "Isaiah 43:19",
-  //   text: "Full text of the prophetic word…"
-  // }
+  { kind: "word", status: "watching", title: "I Break Camp and I Break Out", date: "2026-10-20", youtube: "F0afF5TdyZc",
+    text: "A prophetic word and prayer released on our YouTube channel. Watch the full word below and pray into it.",
+    updates: [{ date: "2026-10-20", text: "Word released on YouTube." }] },
+  { kind: "word", status: "watching", title: "Prophecy Concerning You: This Is Why Things Are Not Working", date: "2026-01", youtube: "OUEhG2ll5DE",
+    text: "A prophetic word released on our YouTube channel. Watch the full word below.",
+    updates: [{ date: "2026-01", text: "Word released on YouTube." }] },
+  { kind: "word", status: "watching", title: "Urgent Prophetic Word Before You Cross Over to 2026", date: "2025-12", youtube: "Dd-YtdZK7VM",
+    text: "An urgent word and decree released before the crossover into 2026.",
+    updates: [{ date: "2025-12", text: "Word released on YouTube." }] },
+  { kind: "word", status: "watching", title: "Documentation Approval & Relocation", date: "2025-12", youtube: "3ju54pA0VYo",
+    text: "A prophetic word concerning documentation approval and relocation. Watch the full word below.",
+    updates: [{ date: "2025-12", text: "Word released on YouTube." }] },
+  { kind: "warning", status: "watching", title: "Are You Conscious of Heaven and Hell?", date: "2024", youtube: "jQWX2ujmTlw",
+    text: "“God said: Are you conscious of Heaven and Hell?” A sober call to the Church to live with eternity in view.",
+    updates: [{ date: "2024", text: "Word released on YouTube." }] },
+  { kind: "word", status: "watching", title: "There’s a Selection in the Realm of the Spirit", date: "2024", youtube: "0ZPy48qGnEM",
+    text: "A prophetic word released on our YouTube channel. Watch the full word below.",
+    updates: [{ date: "2024", text: "Word released on YouTube." }] },
+  { kind: "word", status: "watching", title: "A Word for Upcoming Ministers of the Gospel", date: "2024", youtube: "YRGKfz8HxWs",
+    text: "A prophetic word for those being raised into ministry.",
+    updates: [{ date: "2024", text: "Word released on YouTube." }] },
+  { kind: "warning", status: "watching", title: "Urgent Prophetic Word and Prayers for Now", date: "2024", youtube: "6bGHeS9JD5k",
+    text: "An urgent word with prayers for this season.",
+    updates: [{ date: "2024", text: "Word released on YouTube." }] }
+  // , { kind: "warning", status: "watching", title: "Title", date: "2026-12-01", scripture: "Ezekiel 33:6",
+  //     image: "assets/img/word-dec.jpg", text: "Full text of the word or warning…",
+  //     updates: [{ date: "2026-12-01", text: "Released." }, { date: "2027-01-15", text: "We are seeing this begin to unfold…" }] }
 ];
 
 /* MEDIA — flyers, videos and messages (the ministry's blog).
@@ -178,24 +203,54 @@ var PI_TESTIMONIES = [
     }
   }
 
-  // ---- Prophetic words ----
+  // ---- Prophetic watch ----
   var wordsEl = $("#prophetic-words");
   if (wordsEl) {
+    var STATUS = { watching: "Watching", unfolding: "Unfolding", fulfilled: "Fulfilled" };
     var words = PI_WORDS.slice().sort(byDateDesc);
-    if (!words.length) {
-      wordsEl.innerHTML = emptyState("A fresh word is coming",
-        "Prophetic words for the week and for the month will be posted here. Join our WhatsApp prayer group to receive them as soon as they are released.", true);
-    } else {
-      wordsEl.innerHTML = words.map(function (w, i) {
-        return '<article class="word-card' + (i === 0 ? " featured" : "") + ' reveal in">' +
-          (w.image ? '<a class="word-img" href="' + esc(w.image) + '" target="_blank" rel="noopener"><img src="' + esc(w.image) + '" alt="' + esc(w.title) + '" loading="lazy"></a>' : "") +
-          '<div class="word-body"><span class="badge upcoming">' + esc(w.period || "Prophetic word") + '</span>' +
-          '<h3>' + esc(w.title) + '</h3>' +
-          (w.scripture ? '<div class="event-date">' + esc(w.scripture) + '</div>' : "") +
-          '<div class="word-text">' + esc(w.text).replace(/\n/g, "<br>") + '</div>' +
-          '<small class="muted">' + fmtDate(w.date) + '</small></div></article>';
+    var counts = { all: words.length, word: 0, warning: 0, fulfilled: 0 };
+    words.forEach(function (w) { counts[w.kind] = (counts[w.kind] || 0) + 1; if (w.status === "fulfilled") counts.fulfilled++; });
+    var filters = $("#watch-filters");
+    if (filters) {
+      filters.innerHTML = [["all", "All"], ["word", "Words"], ["warning", "Warnings"], ["fulfilled", "Fulfilled"]].map(function (f, i) {
+        return '<button class="filter' + (i ? "" : " active") + '" data-watch="' + f[0] + '">' + f[1] + ' <span class="count">' + (counts[f[0]] || 0) + "</span></button>";
       }).join("");
     }
+    var drawWords = function (f) {
+      var list = words.filter(function (w) { return f === "all" || (f === "fulfilled" ? w.status === "fulfilled" : w.kind === f); });
+      if (!list.length) {
+        wordsEl.innerHTML = emptyState(f === "fulfilled" ? "Watching and praying" : "A fresh word is coming",
+          f === "fulfilled" ? "As words come to pass, they will be marked fulfilled here with the testimony." :
+          "Words and warnings will be posted here as they are released. Join our WhatsApp prayer group to receive them first.", f !== "fulfilled");
+        return;
+      }
+      wordsEl.innerHTML = list.map(function (w) {
+        var st = w.status || "watching";
+        var media = w.youtube
+          ? '<div class="watch-media"><button class="media-thumb video" data-yt="' + esc(w.youtube) + '" aria-label="Play ' + esc(w.title) + '"><img src="https://i.ytimg.com/vi/' + esc(w.youtube) + '/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button></div>'
+          : (w.image ? '<a class="watch-media" href="' + esc(w.image) + '" target="_blank" rel="noopener"><img src="' + esc(w.image) + '" alt="' + esc(w.title) + '" loading="lazy"></a>' : "");
+        var log = (w.updates || []).slice().sort(function (a, b) { return String(b.date).localeCompare(String(a.date)); });
+        var share = location.origin + location.pathname + "#" + encodeURIComponent(w.title);
+        return '<article class="watch-card kind-' + esc(w.kind) + ' st-' + esc(st) + ' reveal in">' + media +
+          '<div class="watch-body">' +
+            '<div class="watch-tags"><span class="tag kind">' + (w.kind === "warning" ? "⚠ Warning" : "Prophetic word") + '</span>' +
+            '<span class="tag status">' + esc(STATUS[st] || st) + '</span></div>' +
+            '<h3>' + esc(w.title) + '</h3>' +
+            '<div class="post-meta">Released ' + fmtDate(w.date) + (w.scripture ? " · " + esc(w.scripture) : "") + '</div>' +
+            (w.text ? '<p>' + esc(w.text).replace(/\n/g, "<br>") + '</p>' : "") +
+            (log.length ? '<details class="watch-log"><summary>Watch log (' + log.length + ')</summary><ol>' +
+              log.map(function (u) { return '<li><time>' + fmtDate(u.date) + '</time>' + esc(u.text) + '</li>'; }).join("") + '</ol></details>' : "") +
+            '<div class="watch-actions"><a class="btn btn-outline-dark" href="https://wa.me/?text=' + encodeURIComponent(w.title + " — Prophetic Intercession " + share) + '" target="_blank" rel="noopener">Share</a>' +
+            '<a class="btn btn-gold" href="prayer.html">Pray with us</a></div>' +
+          '</div></article>';
+      }).join("");
+    };
+    if (filters) filters.addEventListener("click", function (e) {
+      var b = e.target.closest("[data-watch]"); if (!b) return;
+      filters.querySelectorAll(".filter").forEach(function (x) { x.classList.toggle("active", x === b); });
+      drawWords(b.getAttribute("data-watch"));
+    });
+    drawWords("all");
   }
 
   // ---- Media (blog) ----
