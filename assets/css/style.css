@@ -916,3 +916,10 @@ body { letter-spacing: .005em; }
 .media-card h3 { height: 2.6em; min-height: 0; line-height: 1.3; }
 .media-card .sub, .media-card .message-text, .media-card .body:not(:has(.sub)):not(:has(.message-text))::after { height: 2.9em; min-height: 0; line-height: 1.45; margin: 0; }
 .media-card .sub, .media-card .message-text, .media-card .body:not(:has(.sub)):not(:has(.message-text))::after { font-size: .9rem; }
+/* desktop menu: keep every link on one line at all desktop widths */
+.nav-links a, .brand-text strong { white-space: nowrap; }
+@media (min-width: 1200px) {
+  .nav-links { gap: 1.15rem; }
+  .nav-links a { font-size: .66rem; letter-spacing: .13em; }
+}
+@media (min-width: 1200px) and (max-width: 1360px) { .nav-links { gap: .9rem; } }
