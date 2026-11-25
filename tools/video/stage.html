@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Prophetic Intercession — website launch video</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,500;1,600;1,700&family=Montserrat:wght@400;500;600;700;800;900&display=block" rel="stylesheet">
+<style>
+/* =============================================================
+   One global timeline. Every animation uses an absolute delay
+   (calc(var(--t0) + Xs)); render.js scrubs all animations to the
+   frame time, so each frame is exact and the motion is smooth.
+   ============================================================= */
+:root {
+  --pink: #e5779b; --pink-deep: #c8507a; --blush: #fcecf1; --gold: #c9a24b; --gold-soft: #e2c98c;
+  --black: #0d0b0c; --ink: #1c1719; --ease: cubic-bezier(.22,.8,.24,1); --ease-in: cubic-bezier(.6,0,.8,.2);
+  --serif: "Cormorant Garamond", Georgia, serif; --sans: "Montserrat", system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--black); }
+body { font-family: var(--sans); color: #fff; -webkit-font-smoothing: antialiased; }
+#stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(circle at 50% 60%, #2a1520 0%, var(--black) 65%); }
+.scene { position: absolute; inset: 0; opacity: 0; display: grid; place-items: center;
+  animation: scene var(--dur) linear calc(var(--t0) * 1s) both; }
+@keyframes scene { 0% { opacity: 0; } 6% { opacity: 1; } 94% { opacity: 1; } 100% { opacity: 0; } }
+.a { animation-fill-mode: both; animation-timing-function: var(--ease); }
+/* shared keyframes */
+@keyframes up { from { opacity: 0; transform: translateY(60px); } to { opacity: 1; transform: none; } }
+@keyframes down { from { opacity: 0; transform: translateY(-50px); } to { opacity: 1; transform: none; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes zoomIn { from { opacity: 0; transform: scale(.6) rotate(-8deg); } to { opacity: 1; transform: none; } }
+@keyframes fromLeft { from { opacity: 0; transform: translateX(-140px); } to { opacity: 1; transform: none; } }
+@keyframes fromRight { from { opacity: 0; transform: translateX(140px); } to { opacity: 1; transform: none; } }
+@keyframes kenburns { from { transform: scale(1.12); } to { transform: scale(1); } }
+@keyframes trackOpen { from { letter-spacing: .9em; opacity: 0; filter: blur(12px); } to { letter-spacing: .28em; opacity: 1; filter: blur(0); } }
+@keyframes lineGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes pop { 0% { opacity: 0; transform: scale(.4); } 70% { opacity: 1; transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes glow { 0%,100% { opacity: .55; transform: scale(1); } 50% { opacity: .9; transform: scale(1.08); } }
+@keyframes spin { to { transform: rotate(360deg); } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+
+/* ambient particles across the whole film */
+.particles { position: absolute; inset: 0; pointer-events: none; z-index: 50; }
+.particles i { position: absolute; bottom: -20px; width: var(--s); height: var(--s); border-radius: 50%; background: var(--c); opacity: 0; filter: blur(1px);
+  animation: rise var(--d) linear var(--dl) infinite; }
+@keyframes rise { 0% { transform: translateY(0); opacity: 0; } 10% { opacity: .7; } 90% { opacity: .5; } 100% { transform: translateY(-1200px) translateX(var(--x)); opacity: 0; } }
+
+/* ---------- S1 logo intro ---------- */
+.s1 { --t0: 0; --dur: 4.8s; }
+.s1 .halo { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle, rgba(229,119,155,.35), rgba(201,162,75,.12) 40%, transparent 70%); animation: glow 4s ease-in-out 0s infinite; }
+.s1 .ring { position: absolute; width: 560px; height: 560px; border-radius: 50%; border: 2px solid rgba(201,162,75,.5); border-top-color: transparent; border-left-color: transparent; animation: spin 6s linear 0s infinite; }
+.s1 .ring.r2 { width: 640px; height: 640px; border-color: rgba(229,119,155,.35); border-right-color: transparent; border-bottom-color: transparent; animation-duration: 9s; animation-direction: reverse; }
+.s1 .stack { text-align: center; position: relative; }
+.s1 img { width: 300px; height: 300px; border-radius: 50%; box-shadow: 0 0 0 4px rgba(201,162,75,.7), 0 30px 120px rgba(229,119,155,.45); animation: zoomIn 1.4s var(--ease) .2s both; }
+.s1 h1 { font-size: 76px; font-weight: 800; letter-spacing: .28em; text-transform: uppercase; margin-top: 46px; animation: trackOpen 1.6s var(--ease) 1.2s both; }
+.s1 .line { width: 360px; height: 3px; margin: 22px auto; background: linear-gradient(90deg, var(--gold), var(--pink)); transform-origin: center; animation: lineGrow 1s var(--ease) 2.2s both; }
+.s1 p { font-size: 24px; letter-spacing: .36em; text-transform: uppercase; color: var(--gold-soft); font-weight: 600; animation: up 1s var(--ease) 2.5s both; }
+
+/* ---------- S2 slogan ---------- */
+.s2 { --t0: 4.8; --dur: 4.6s; background: linear-gradient(135deg, #160d12, var(--black)); }
+.s2 .words { display: grid; gap: 6px; text-align: center; }
+.s2 .w { font-size: 128px; font-weight: 900; letter-spacing: -.02em; line-height: 1.02; opacity: 0; }
+.s2 .w span { background: linear-gradient(90deg, #fff, var(--gold-soft)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.s2 .w.pink span { background: linear-gradient(90deg, var(--pink), #ffd1df); -webkit-background-clip: text; background-clip: text; }
+.s2 .w1 { animation: fromLeft .9s var(--ease) calc(5.1s) both; }
+.s2 .w2 { animation: fromRight .9s var(--ease) calc(5.8s) both; }
+.s2 .w3 { animation: up .9s var(--ease) calc(6.5s) both; }
+
+/* ---------- S3 browser / domain ---------- */
+.s3 { --t0: 9.4; --dur: 4.6s; background: radial-gradient(circle at 50% 40%, #2d1622, var(--black) 70%); }
+.s3 .kicker { position: absolute; top: 230px; width: 100%; text-align: center; font-family: var(--serif); font-style: italic; font-size: 64px; color: #fff; animation: down 1s var(--ease) 9.6s both; }
+.s3 .kicker b { color: var(--pink); font-weight: 600; }
+.s3 .bar { width: 1180px; height: 120px; border-radius: 70px; background: #fff; display: flex; align-items: center; gap: 28px; padding: 0 44px; box-shadow: 0 40px 120px rgba(229,119,155,.35); color: var(--ink); animation: pop 1s var(--ease) 10.2s both; margin-top: 120px; }
+.s3 .lock { width: 44px; height: 44px; flex: none; color: #2f9e5b; }
+.s3 .url { font-size: 56px; font-weight: 700; letter-spacing: -.01em; white-space: nowrap; display: inline-block; padding-right: 10px; border-right: 5px solid var(--pink);
+  animation: type 1.8s steps(25, end) 10.9s both, caret .6s step-end 12.7s 3; }
+@keyframes type { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@keyframes caret { 50% { border-color: transparent; } }
+.s3 .url span { color: var(--pink-deep); }
+.s3 .go { margin-left: auto; width: 76px; height: 76px; border-radius: 50%; background: linear-gradient(135deg, #d8b45f, var(--gold)); display: grid; place-items: center; font-size: 38px; color: var(--black); font-weight: 900; animation: pop .7s var(--ease) 12.6s both; }
+
+/* ---------- S4 device showcase ---------- */
+.s4 { --t0: 14; --dur: 7s; background: radial-gradient(circle at 70% 30%, rgba(229,119,155,.25), transparent 50%), radial-gradient(circle at 20% 80%, rgba(201,162,75,.18), transparent 50%), #120c10; }
+.s4 .title { position: absolute; top: 70px; left: 0; right: 0; text-align: center; animation: down .9s var(--ease) 14.2s both; }
+.s4 .title small { display: block; font-size: 22px; letter-spacing: .32em; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; margin-bottom: 10px; }
+.s4 .title h2 { font-size: 64px; font-weight: 800; }
+.laptop { position: absolute; left: 190px; top: 250px; width: 1180px; animation: fromLeft 1.2s var(--ease) 14.4s both; }
+.laptop .screen { width: 1180px; height: 738px; border-radius: 26px 26px 0 0; background: #000; padding: 22px 22px 0; box-shadow: 0 50px 120px rgba(0,0,0,.6); border: 2px solid #2a2a2a; }
+.laptop .view { width: 100%; height: 100%; overflow: hidden; border-radius: 6px 6px 0 0; position: relative; }
+.laptop .view img { width: 100%; display: block; animation: scrollDesk 5.4s cubic-bezier(.45,0,.25,1) 15.3s both; }
+@keyframes scrollDesk { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 716px)); } }
+.laptop .base { width: 1320px; margin-left: -70px; height: 34px; border-radius: 0 0 30px 30px; background: linear-gradient(#cfcfd4, #8e8e95); }
+.phone { position: absolute; right: 230px; top: 300px; width: 330px; height: 690px; border-radius: 56px; background: #0b0b0b; padding: 16px; box-shadow: 0 50px 120px rgba(0,0,0,.7), 0 0 0 3px #333; animation: fromRight 1.2s var(--ease) 14.8s both; }
+.phone .view { width: 100%; height: 100%; border-radius: 42px; overflow: hidden; position: relative; }
+.phone .view img { width: 100%; display: block; animation: scrollMob 5.2s cubic-bezier(.45,0,.25,1) 15.5s both; }
+@keyframes scrollMob { from { transform: translateY(0); } to { transform: translateY(-2600px); } }
+.phone .notch { position: absolute; top: 26px; left: 50%; width: 110px; height: 30px; margin-left: -55px; border-radius: 20px; background: #000; z-index: 3; }
+
+/* ---------- feature scenes (S6 watch, S7 blog, S9 give) ---------- */
+.feature { --dur: 5s; background: linear-gradient(120deg, #1a0f15 0%, var(--black) 60%); }
+.feature .copy { position: absolute; left: 130px; top: 0; bottom: 0; width: 600px; display: flex; flex-direction: column; justify-content: center; }
+.feature .num { font-size: 22px; letter-spacing: .3em; color: var(--gold-soft); font-weight: 800; text-transform: uppercase; animation: fade .8s var(--ease) calc((var(--t0) + .3) * 1s) both; }
+.feature h2 { font-size: 86px; line-height: 1.02; font-weight: 900; margin: 22px 0 26px; letter-spacing: -.02em; animation: up 1s var(--ease) calc((var(--t0) + .45) * 1s) both; }
+.feature h2 em { font-family: var(--serif); font-weight: 600; color: var(--pink); font-size: 1.05em; }
+.feature p { font-size: 30px; line-height: 1.45; color: rgba(255,255,255,.8); animation: up 1s var(--ease) calc((var(--t0) + .75) * 1s) both; }
+.feature .shot { position: absolute; right: 110px; top: 150px; width: 1040px; height: 650px; border-radius: 28px; overflow: hidden; box-shadow: 0 60px 140px rgba(0,0,0,.7), 0 0 0 1px rgba(255,255,255,.08);
+  transform: perspective(2200px) rotateY(-9deg) rotateX(3deg); animation: shotIn 1.3s var(--ease) calc((var(--t0) + .4) * 1s) both; }
+@keyframes shotIn { from { opacity: 0; transform: perspective(2200px) rotateY(-25deg) rotateX(6deg) translateX(200px) scale(.9); } to { opacity: 1; transform: perspective(2200px) rotateY(-9deg) rotateX(3deg); } }
+.feature .shot img { width: 100%; height: 100%; object-fit: cover; object-position: top; animation: kenburns 5s linear calc(var(--t0) * 1s) both; transform-origin: top left; }
+.feature .chip { position: absolute; padding: 16px 26px; border-radius: 999px; font-weight: 800; font-size: 22px; letter-spacing: .12em; text-transform: uppercase; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+.s6 { --t0: 26; } .s7 { --t0: 31; } .s9 { --t0: 41; }
+.s6 .c1 { right: 900px; top: 760px; background: #fbf1d9; color: #7a5a12; animation: pop .8s var(--ease) 27.6s both; }
+.s6 .c2 { right: 640px; top: 820px; background: var(--blush); color: var(--pink-deep); animation: pop .8s var(--ease) 27.9s both; }
+.s6 .c3 { right: 400px; top: 760px; background: #dff3e6; color: #1d6b3c; animation: pop .8s var(--ease) 28.2s both; }
+.s7 .c1 { right: 150px; top: 110px; background: var(--pink); color: #fff; animation: pop .8s var(--ease) 32.6s both; }
+.s9 .methods { position: absolute; right: 120px; top: 170px; display: grid; gap: 26px; width: 980px; }
+.s9 .m { display: grid; grid-template-columns: 120px 1fr 60px; gap: 34px; align-items: center; background: #fff; color: var(--ink); border-radius: 32px; padding: 26px 36px; box-shadow: 0 40px 100px rgba(0,0,0,.55); }
+.s9 .m:nth-child(1) { animation: fromRight .9s var(--ease) 41.5s both; }
+.s9 .m:nth-child(2) { animation: fromRight .9s var(--ease) 41.8s both; }
+.s9 .m:nth-child(3) { animation: fromRight .9s var(--ease) 42.1s both; }
+.s9 .m svg { width: 120px; height: 120px; border-radius: 26px; }
+.s9 .m strong { display: block; font-size: 46px; font-weight: 800; }
+.s9 .m small { font-size: 26px; color: #6d6266; }
+.s9 .m .tick { width: 60px; height: 60px; border-radius: 50%; border: 4px solid #ddd; }
+.s9 .m.on { outline: 5px solid var(--gold); animation: fromRight .9s var(--ease) 41.5s both, selectPulse 1.2s var(--ease) 43.2s both; }
+.s9 .m.on .tick { background: var(--gold); border-color: var(--gold); animation: pop .6s var(--ease) 43.2s both; }
+@keyframes selectPulse { 0% { transform: scale(1); } 40% { transform: scale(1.04); } 100% { transform: scale(1); } }
+
+/* ---------- S5 channels ---------- */
+.s5 { --t0: 21; --dur: 5s; background: radial-gradient(circle at 50% 50%, #241019, var(--black) 70%); }
+.s5 .wrap { text-align: center; }
+.s5 h2 { font-size: 92px; font-weight: 900; letter-spacing: -.02em; animation: up 1s var(--ease) 21.3s both; }
+.s5 h2 em { font-family: var(--serif); color: var(--pink); font-weight: 600; }
+.s5 p { font-size: 30px; color: rgba(255,255,255,.75); margin: 18px 0 70px; animation: up 1s var(--ease) 21.6s both; }
+.s5 .icons { display: flex; gap: 60px; justify-content: center; }
+.s5 .ic { width: 210px; text-align: center; }
+.s5 .ic div { width: 170px; height: 170px; margin: 0 auto 24px; border-radius: 44px; display: grid; place-items: center; box-shadow: 0 30px 80px rgba(0,0,0,.5); }
+.s5 .ic svg { width: 92px; height: 92px; }
+.s5 .ic span { font-size: 28px; font-weight: 700; letter-spacing: .04em; }
+.s5 .ic:nth-child(1) { animation: pop .8s var(--ease) 22.2s both; } .s5 .ic:nth-child(2) { animation: pop .8s var(--ease) 22.45s both; }
+.s5 .ic:nth-child(3) { animation: pop .8s var(--ease) 22.7s both; } .s5 .ic:nth-child(4) { animation: pop .8s var(--ease) 22.95s both; }
+.s5 .ic div > * { animation: float 2.4s ease-in-out 0s infinite; }
+
+/* ---------- S8 gallery rows ---------- */
+.s8 { --t0: 36; --dur: 5s; background: #120c10; }
+.s8 .head { position: absolute; top: 90px; width: 100%; text-align: center; z-index: 2; }
+.s8 .head h2 { font-size: 84px; font-weight: 900; animation: down 1s var(--ease) 36.3s both; }
+.s8 .head h2 em { font-family: var(--serif); color: var(--pink); font-weight: 600; }
+.s8 .rows { position: absolute; top: 300px; left: 0; right: 0; display: grid; gap: 30px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent); }
+.s8 .row { display: flex; gap: 30px; width: max-content; }
+.s8 .row img { width: 260px; height: 330px; object-fit: cover; object-position: center 25%; border-radius: 26px; }
+.s8 .row.b img { height: 260px; width: 300px; }
+.s8 .row.a { animation: rowA 5s linear 36s both; }
+.s8 .row.b { animation: rowB 5s linear 36s both; }
+@keyframes rowA { from { transform: translateX(0); } to { transform: translateX(-900px); } }
+@keyframes rowB { from { transform: translateX(-1300px); } to { transform: translateX(-400px); } }
+
+/* ---------- CLIP slot (her video clips get spliced in here) ---------- */
+
+/* ---------- S10 convener ---------- */
+.s10 { --t0: 46; --dur: 5s; background: radial-gradient(circle at 30% 40%, rgba(229,119,155,.28), transparent 55%), var(--black); }
+.s10 .photo { position: absolute; left: 170px; top: 120px; width: 620px; height: 840px; border-radius: 320px 320px 40px 40px; overflow: hidden; box-shadow: 0 60px 140px rgba(0,0,0,.6); animation: up 1.2s var(--ease) 46.2s both; }
+.s10 .photo img { width: 100%; height: 100%; object-fit: cover; object-position: center 18%; animation: kenburns 5s linear 46s both; }
+.s10 .frame { position: absolute; left: 140px; top: 96px; width: 620px; height: 840px; border-radius: 320px 320px 40px 40px; border: 3px solid var(--gold); animation: fade 1.2s var(--ease) 46.7s both; }
+.s10 .quote { position: absolute; left: 900px; right: 140px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+.s10 .quote small { font-size: 22px; letter-spacing: .3em; color: var(--gold-soft); text-transform: uppercase; font-weight: 800; animation: fade .8s var(--ease) 46.6s both; }
+.s10 .quote blockquote { font-family: var(--serif); font-style: italic; font-size: 64px; line-height: 1.25; margin: 26px 0 34px; animation: up 1.1s var(--ease) 46.9s both; }
+.s10 .quote blockquote b { color: var(--pink); font-weight: 700; }
+.s10 .quote cite { font-style: normal; font-size: 28px; font-weight: 700; letter-spacing: .08em; animation: up 1s var(--ease) 47.4s both; }
+.s10 .quote cite span { display: block; font-size: 22px; color: var(--gold-soft); letter-spacing: .2em; text-transform: uppercase; margin-top: 8px; }
+
+/* ---------- S11 end card ---------- */
+.s11 { --t0: 51; --dur: 7s; background: radial-gradient(circle at 50% 45%, #331a26, var(--black) 70%); }
+.s11 .center { text-align: center; position: relative; }
+.s11 img { width: 190px; height: 190px; border-radius: 50%; box-shadow: 0 0 0 4px rgba(201,162,75,.7), 0 20px 80px rgba(229,119,155,.4); animation: zoomIn 1.2s var(--ease) 51.2s both; }
+.s11 .visit { font-size: 30px; letter-spacing: .36em; text-transform: uppercase; color: var(--gold-soft); font-weight: 700; margin: 40px 0 18px; animation: up .9s var(--ease) 51.8s both; }
+.s11 .domain { font-size: 108px; font-weight: 900; letter-spacing: -.02em; animation: up 1s var(--ease) 52.1s both; }
+.s11 .domain span { background: linear-gradient(90deg, #fff 0%, var(--gold-soft) 45%, var(--pink) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.s11 .line { width: 520px; height: 4px; margin: 34px auto; background: linear-gradient(90deg, var(--gold), var(--pink)); animation: lineGrow 1s var(--ease) 52.8s both; }
+.s11 .slogan { font-family: var(--serif); font-style: italic; font-size: 46px; color: rgba(255,255,255,.88); animation: up 1s var(--ease) 53.2s both; }
+.s11 .socials { display: flex; gap: 40px; justify-content: center; margin-top: 46px; font-size: 26px; font-weight: 600; color: rgba(255,255,255,.75); animation: up 1s var(--ease) 53.8s both; }
+.s11 .socials b { color: #fff; }
+
+/* =============================================================
+   VERTICAL 1080x1920 layout (TikTok, Reels, WhatsApp status)
+   ============================================================= */
+body.v, body.v #stage { width: 1080px; height: 1920px; }
+body.v .s1 h1 { font-size: 54px; } body.v .s1 p { font-size: 20px; }
+body.v .s2 .w { font-size: 104px; }
+body.v .s3 .kicker { top: 560px; font-size: 56px; padding: 0 60px; }
+body.v .s3 .bar { width: 960px; height: 104px; padding: 0 30px; gap: 20px; }
+body.v .s3 .url { font-size: 44px; }
+body.v .s3 .go { width: 64px; height: 64px; font-size: 30px; }
+body.v .s4 .title { top: 150px; } body.v .s4 .title h2 { font-size: 58px; }
+body.v .laptop { left: 40px; top: 400px; width: 1000px; transform-origin: top left; }
+body.v .laptop .screen { width: 1000px; height: 625px; padding: 18px 18px 0; }
+body.v .laptop .base { width: 1100px; margin-left: -50px; }
+body.v .laptop .view img { animation-name: scrollDeskV; }
+@keyframes scrollDeskV { from { transform: translateY(0); } to { transform: translateY(calc(-100% + 607px)); } }
+body.v .phone { right: 80px; top: 960px; width: 380px; height: 790px; }
+body.v .s5 h2 { font-size: 80px; } body.v .s5 p { padding: 0 60px; }
+body.v .s5 .icons { flex-wrap: wrap; gap: 50px 70px; width: 700px; margin: 0 auto; }
+body.v .feature .copy { left: 70px; right: 70px; width: auto; top: 170px; bottom: auto; }
+body.v .feature h2 { font-size: 92px; }
+body.v .feature .shot { right: 40px; left: 40px; width: auto; top: 900px; height: 640px; transform: none; animation-name: shotInV; }
+@keyframes shotInV { from { opacity: 0; transform: translateY(160px) scale(.92); } to { opacity: 1; transform: none; } }
+body.v .s6 .c1 { right: auto; left: 70px; top: 1620px; } body.v .s6 .c2 { right: auto; left: 380px; top: 1620px; } body.v .s6 .c3 { right: auto; left: 700px; top: 1620px; }
+body.v .s7 .c1 { right: 70px; top: 840px; }
+body.v .s9 .methods { right: 60px; left: 60px; width: auto; top: 900px; }
+body.v .s9 .m { grid-template-columns: 100px 1fr 50px; padding: 24px 30px; }
+body.v .s9 .m svg { width: 100px; height: 100px; }
+body.v .s8 .head { top: 240px; } body.v .s8 .rows { top: 560px; gap: 40px; }
+body.v .s8 .row img { width: 300px; height: 400px; } body.v .s8 .row.b img { width: 340px; height: 300px; }
+body.v .s10 .photo { left: 190px; top: 170px; width: 700px; height: 900px; }
+body.v .s10 .frame { left: 160px; top: 146px; width: 700px; height: 900px; }
+body.v .s10 .quote { left: 80px; right: 80px; top: 1110px; bottom: 120px; justify-content: flex-start; text-align: center; }
+body.v .s10 .quote blockquote { font-size: 58px; }
+body.v .s11 .domain { font-size: 74px; }
+body.v .s11 .socials { flex-direction: column; gap: 14px; }
+/* vertical: fill the tall frame */
+body.v .s1 img { width: 360px; height: 360px; } body.v .s1 h1 { font-size: 62px; }
+body.v .s3 .kicker { top: 640px; font-size: 64px; }
+body.v .s5 h2 { font-size: 74px; } body.v .s5 p { font-size: 34px; margin-bottom: 90px; }
+body.v .s5 .icons { width: 820px; gap: 70px 110px; }
+body.v .s5 .ic { width: 300px; } body.v .s5 .ic div { width: 240px; height: 240px; border-radius: 60px; } body.v .s5 .ic svg { width: 130px; height: 130px; } body.v .s5 .ic span { font-size: 36px; }
+body.v .feature .copy { top: 200px; }
+body.v .feature h2 { font-size: 104px; } body.v .feature p { font-size: 38px; } body.v .feature .num { font-size: 26px; }
+body.v .feature .shot { top: 820px; height: 760px; }
+body.v .s6 .c1, body.v .s6 .c2, body.v .s6 .c3 { top: 1660px; font-size: 26px; }
+body.v .s7 .c1 { top: 770px; }
+body.v .s9 .methods { top: 860px; gap: 34px; }
+body.v .s9 .m { padding: 34px 36px; } body.v .s9 .m strong { font-size: 54px; } body.v .s9 .m small { font-size: 30px; }
+body.v .s8 .head { top: 300px; } body.v .s8 .head h2 { font-size: 96px; }
+body.v .s8 .rows { top: 560px; gap: 44px; }
+body.v .s8 .row img { width: 400px; height: 540px; } body.v .s8 .row.b img { width: 440px; height: 440px; }
+body.v .s11 img { width: 260px; height: 260px; } body.v .s11 .domain { font-size: 64px; } body.v .s11 .slogan { font-size: 44px; padding: 0 40px; } body.v .s11 .socials { font-size: 30px; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="particles" id="particles"></div>
+
+  <section class="scene s1">
+    <div class="halo"></div><div class="ring"></div><div class="ring r2"></div>
+    <div class="stack">
+      <img src="assets/logo.png" alt="">
+      <h1>Prophetic Intercession</h1>
+      <div class="line"></div>
+      <p>A Global Interdenominational Ministry</p>
+    </div>
+  </section>
+
+  <section class="scene s2">
+    <div class="words">
+      <div class="w w1"><span>Raising a Tribe.</span></div>
+      <div class="w w2 pink"><span>Birthing Revival.</span></div>
+      <div class="w w3"><span>Transforming Nations.</span></div>
+    </div>
+  </section>
+
+  <section class="scene s3">
+    <div class="kicker">Our <b>new home</b> online is here</div>
+    <div class="bar">
+      <svg class="lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+      <div class="url">propheticintercession<span>.org</span></div>
+      <div class="go">→</div>
+    </div>
+  </section>
+
+  <section class="scene s4">
+    <div class="title"><small>Brand new website</small><h2>Beautiful on every screen</h2></div>
+    <div class="laptop"><div class="screen"><div class="view"><img src="assets/home-desk-full.jpg" alt=""></div></div><div class="base"></div></div>
+    <div class="phone"><div class="notch"></div><div class="view"><img src="assets/home-mob-full.jpg" alt=""></div></div>
+  </section>
+
+  <section class="scene s5">
+    <div class="wrap">
+      <h2>Pray with us <em>anywhere</em></h2>
+      <p>Zoom · WhatsApp · TikTok · YouTube — one global altar</p>
+      <div class="icons">
+        <div class="ic"><div style="background:#25d366"><svg viewBox="0 0 24 24" fill="#fff"><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.94 1.16-.17.2-.35.22-.64.07-.3-.15-1.25-.46-2.38-1.47-.88-.79-1.47-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.75-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35M12.05 21.5a9.43 9.43 0 0 1-4.8-1.32l-.35-.2-3.57.93.96-3.48-.23-.36a9.4 9.4 0 0 1-1.44-5.02c0-5.2 4.24-9.44 9.45-9.44 2.52 0 4.89.99 6.67 2.77a9.37 9.37 0 0 1 2.76 6.68c0 5.21-4.24 9.44-9.44 9.44m8.04-17.48A11.3 11.3 0 0 0 12.05.7C5.78.7.68 5.8.68 12.06c0 2 .52 3.96 1.52 5.68L.58 23.7l6.1-1.6a11.36 11.36 0 0 0 5.37 1.37c6.26 0 11.36-5.1 11.36-11.37 0-3.03-1.18-5.89-3.33-8.03"/></svg></div><span>WhatsApp</span></div>
+        <div class="ic"><div style="background:#2d8cff"><svg viewBox="0 0 24 24" fill="#fff"><path d="M2 7.5A2.5 2.5 0 0 1 4.5 5h9A2.5 2.5 0 0 1 16 7.5v9a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 2 16.5zm15 2.3 4.2-2.9c.36-.25.8 0 .8.43v9.34c0 .43-.44.68-.8.43L17 14.2z"/></svg></div><span>Zoom</span></div>
+        <div class="ic"><div style="background:#111;border:2px solid #333"><svg viewBox="0 0 24 24" fill="#fff"><path d="M19.6 6.7a4.8 4.8 0 0 1-3.8-4.2V2h-3.4v13.7a2.9 2.9 0 1 1-2-2.7V9.5a6.3 6.3 0 1 0 5.4 6.2V8.8a8.2 8.2 0 0 0 4.8 1.5V6.9a4.8 4.8 0 0 1-1-.2z"/></svg></div><span>TikTok</span></div>
+        <div class="ic"><div style="background:#ff0033"><svg viewBox="0 0 24 24" fill="#fff"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"/></svg></div><span>YouTube</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene feature s6">
+    <div class="copy">
+      <div class="num">New · Prophetic Watch</div>
+      <h2>Words &amp; warnings, <em>watched over</em></h2>
+      <p>Every prophetic word is published, prayed over and tracked until it comes to pass.</p>
+    </div>
+    <div class="shot"><img src="assets/watch.jpg" alt=""></div>
+    <div class="chip c1">Watching</div><div class="chip c2">Unfolding</div><div class="chip c3">Fulfilled</div>
+  </section>
+
+  <section class="scene feature s7">
+    <div class="copy">
+      <div class="num">New · Blog</div>
+      <h2>Stories, teachings &amp; <em>testimonies</em></h2>
+      <p>Read what God is doing through the ministry — with photos, videos and the Word.</p>
+    </div>
+    <div class="shot"><img src="assets/blog-post.jpg" alt=""></div>
+    <div class="chip c1">Read · Share · Be blessed</div>
+  </section>
+
+  <section class="scene s8">
+    <div class="head"><h2>Moments in <em>ministry</em></h2></div>
+    <div class="rows">
+      <div class="row a"><img src="assets/g01-sm.jpg"><img src="assets/g03-sm.jpg"><img src="assets/g05-sm.jpg"><img src="assets/g14-sm.jpg"><img src="assets/g08-sm.jpg"><img src="assets/g11-sm.jpg"><img src="assets/g02-sm.jpg"><img src="assets/g06-sm.jpg"><img src="assets/g10-sm.jpg"></div>
+      <div class="row b"><img src="assets/g12-sm.jpg"><img src="assets/g04-sm.jpg"><img src="assets/g09-sm.jpg"><img src="assets/g13-sm.jpg"><img src="assets/g07-sm.jpg"><img src="assets/g14-sm.jpg"><img src="assets/g01-sm.jpg"><img src="assets/g05-sm.jpg"><img src="assets/g03-sm.jpg"></div>
+    </div>
+  </section>
+
+  <section class="scene feature s9">
+    <div class="copy">
+      <div class="num">New · Giving</div>
+      <h2>Sow a seed in <em>seconds</em></h2>
+      <p>Choose MTN MoMo, Zelle or crypto — your details appear instantly, with one-tap copy.</p>
+    </div>
+    <div class="methods">
+      <div class="m"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#ffcb05"/><ellipse cx="24" cy="24" rx="17" ry="10.5" fill="none" stroke="#00487a" stroke-width="2.6"/><text x="24" y="28.5" text-anchor="middle" font-family="Arial Black,Arial" font-weight="900" font-size="11.5" fill="#00487a">MTN</text></svg><div><strong>MTN MoMo</strong><small>Mobile Money · Cameroon</small></div><div class="tick"></div></div>
+      <div class="m on"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#6d1ed4"/><path d="M16 15h16v4.2L21.6 30H32v4H16v-4.2L26.4 19H16z" fill="#fff"/><rect x="22.6" y="10.5" width="2.8" height="5.5" fill="#fff"/><rect x="22.6" y="32" width="2.8" height="5.5" fill="#fff"/></svg><div><strong>Zelle</strong><small>Bank transfer · USA</small></div><div class="tick"></div></div>
+      <div class="m"><svg viewBox="0 0 48 48"><rect width="48" height="48" rx="12" fill="#111"/><g fill="#f0b90b"><path d="M24 11l4.2 4.2-4.2 4.2-4.2-4.2z"/><path d="M24 28.6l4.2 4.2L24 37l-4.2-4.2z"/><path d="M15.2 19.8l4.2 4.2-4.2 4.2L11 24z"/><path d="M32.8 19.8L37 24l-4.2 4.2-4.2-4.2z"/><path d="M24 19.8l4.2 4.2-4.2 4.2-4.2-4.2z"/></g></svg><div><strong>BNB / USDT</strong><small>Crypto · BEP-20</small></div><div class="tick"></div></div>
+    </div>
+  </section>
+
+  <section class="scene s10">
+    <div class="frame"></div>
+    <div class="photo"><img src="assets/g14.jpg" alt=""></div>
+    <div class="quote">
+      <small>Our philosophy</small>
+      <blockquote>“We are not raising people who merely know how to pray. We are raising people who <b>know the God</b> to whom they pray.”</blockquote>
+      <cite>Prophetic Intercessor<span>Convener &amp; Host</span></cite>
+    </div>
+  </section>
+
+  <section class="scene s11">
+    <div class="center">
+      <img src="assets/logo.png" alt="">
+      <div class="visit">Visit our new website</div>
+      <div class="domain"><span>propheticintercession.org</span></div>
+      <div class="line"></div>
+      <div class="slogan">Raising a Tribe · Birthing Revival · Transforming Nations</div>
+      <div class="socials"><span>WhatsApp · <b>Join the prayer group</b></span><span>YouTube &amp; TikTok · <b>@propheticandintercession</b></span></div>
+    </div>
+  </section>
+</div>
+
+<script>
+  // vertical layout via ?v=1
+  if (new URLSearchParams(location.search).get("v")) document.body.classList.add("v");
+  // deterministic particles
+  (function () {
+    var host = document.getElementById("particles"), seed = 7;
+    function rnd() { seed = (seed * 16807) % 2147483647; return seed / 2147483647; }
+    var cols = ["rgba(201,162,75,.9)", "rgba(229,119,155,.8)", "rgba(255,255,255,.7)"];
+    for (var i = 0; i < 46; i++) {
+      var e = document.createElement("i");
+      e.style.left = (rnd() * 100) + "%";
+      e.style.setProperty("--s", (3 + rnd() * 7) + "px");
+      e.style.setProperty("--c", cols[i % 3]);
+      e.style.setProperty("--d", (9 + rnd() * 10) + "s");
+      e.style.setProperty("--dl", (-rnd() * 18) + "s");
+      e.style.setProperty("--x", ((rnd() - .5) * 200) + "px");
+      host.appendChild(e);
+    }
+  })();
+  // Scrub every animation to time t (seconds)
+  window.DURATION = 58;
+  window.renderAt = function (t) {
+    document.getAnimations().forEach(function (a) { a.pause(); a.currentTime = t * 1000; });
+  };
+  window.renderAt(0);
+</script>
+</body>
+</html>
