@@ -78,7 +78,7 @@ var PI_GALLERY = [
   { n: "11", caption: "Lost in worship" },
   { n: "12", caption: "Declaring the Word" },
   { n: "13", caption: "In the place of prayer" },
-  { n: "14", caption: "Prophetic Intercessor — founder & host" }
+  { n: "14", caption: "Prophetic Intercessor — convener & host" }
 ];
 
 /* GIVING — the methods shown in the giving engine on give.html */

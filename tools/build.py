@@ -87,7 +87,7 @@ FOOTER = '''<footer class="site-footer">
         <h4>Ministry</h4>
         <ul>
           <li><a href="about.html">About Us</a></li>
-          <li><a href="founder.html">Our Founder</a></li>
+          <li><a href="convener.html">Our Convener</a></li>
           <li><a href="about.html#beliefs">What We Believe</a></li>
           <li><a href="outreach.html">Our Outreach</a></li>
           <li><a href="testimonies.html">Testimonies</a></li>
@@ -358,9 +358,9 @@ home = f'''
     <div class="founder-copy">
       <div class="founder-card reveal">
         <span class="eyebrow">Ministry leadership</span>
-        <h2><span class="serif">Founder &amp; Host</span>Prophetic Intercessor</h2>
-        <p>Called to the place of prayer, our founder carries a burden for revival and for raising a generation of prophetic intercessors. Through Prophetic Intercession she gathers believers across nations to pray, then leads them out to reach prisoners, rural communities and orphaned children with the love of Christ.</p>
-        <a class="btn btn-gold" href="founder.html">Learn more</a>
+        <h2><span class="serif">Convener &amp; Host</span>Prophetic Intercessor</h2>
+        <p>Called to the place of prayer, our convener carries a burden for revival and for raising a generation of prophetic intercessors. Through Prophetic Intercession she gathers believers across nations to pray, then leads them out to reach prisoners, rural communities and orphaned children with the love of Christ.</p>
+        <a class="btn btn-gold" href="convener.html">Learn more</a>
       </div>
     </div>
   </div>
@@ -412,7 +412,7 @@ about = page_hero("vision-sunrise.jpg", "A global interdenominational ministry",
       <p>The vision of Prophetic Intercession was birthed in the wake of 2020, out of a deep spiritual burden for prayer, revival and the emergence of a generation of prophetic intercessors.</p>
       <p>The vision began to find full expression in 2023 through YouTube, where people gathered for extended hours of prayer and intercession, standing in the gap for individuals, families and nations.</p>
       <p>What began as a burden to pray for people has grown into a greater mandate: raising a global prophetic and intercessory tribe equipped to discern the heart of God, birth His purposes through prayer and become instruments of divine intervention in their generation.</p>
-      <div class="hero-row mt-2"><a class="btn btn-gold" href="founder.html">Meet our founder</a><a class="btn btn-outline-dark" href="outreach.html">Our outreach</a></div>
+      <div class="hero-row mt-2"><a class="btn btn-gold" href="convener.html">Meet our convener</a><a class="btn btn-outline-dark" href="outreach.html">Our outreach</a></div>
     </div>
     <div class="img-accent reveal"><div class="img-frame tall"><img src="assets/img/gallery/g01.jpg" alt="Prophetic Intercessor in intercession" loading="lazy" style="object-position:center 30%"></div></div>
   </div>
@@ -504,9 +504,9 @@ founder = '''
     <div class="founder-photo reveal"><img src="assets/img/gallery/g14.jpg" alt="Prophetic Intercessor ministering in prayer" style="object-position:center 18%"><span class="pin">Host · Prophetic Intercessor</span></div>
     <div class="founder-copy">
       <div class="founder-card reveal">
-        <span class="eyebrow">Our founder</span>
-        <h2><span class="serif">Founder &amp; Host</span>Prophetic Intercessor</h2>
-        <p>Our founder is a woman of prayer with a prophetic burden for revival. In the wake of 2020, God birthed in her the vision of Prophetic Intercession — and from 2023 she began gathering people on YouTube for extended hours of prayer, standing in the gap for individuals, families and nations.</p>
+        <span class="eyebrow">Our convener</span>
+        <h2><span class="serif">Convener &amp; Host</span>Prophetic Intercessor</h2>
+        <p>Our convener is a woman of prayer with a prophetic burden for revival. In the wake of 2020, God birthed in her the vision of Prophetic Intercession — and from 2023 she began gathering people on YouTube for extended hours of prayer, standing in the gap for individuals, families and nations.</p>
         <p>Her heart beats for people the world often overlooks. Under her leadership the ministry has reached into prisons, supported rural missions, and begun the work of building an orphanage.</p>
         <div class="hero-row" style="margin-top:1.2rem">
           <a class="btn btn-gold" href="events.html">Pray with her</a>
@@ -539,7 +539,7 @@ founder = '''
         <div class="tl-item"><h3>2023 · Prayer on YouTube</h3><p>People gather online for extended hours of prayer and intercession.</p></div>
         <div class="tl-item"><h3>2026 · Prison outreach, Douala</h3><p>The ministry takes prayer and the Gospel into prison in Douala, Cameroon.</p></div>
         <div class="tl-item"><h3>Rural missions supported</h3><p>Prophetic Intercession stands behind mission work in remote communities.</p></div>
-        <div class="tl-item"><h3>24 Hours Prayer Stretch · Nov 2026</h3><p>A full day and night of prayer on Zoom, hosted by our founder — Psalm 85:6.</p></div>
+        <div class="tl-item"><h3>24 Hours Prayer Stretch · Nov 2026</h3><p>A full day and night of prayer on Zoom, hosted by our convener — Psalm 85:6.</p></div>
         <div class="tl-item progress"><h3>Orphanage — in progress</h3><p>We are working toward a loving home for orphaned children.</p></div>
         <div class="tl-item future"><h3>Hospitals &amp; schools — the future</h3><p>A vision for healing and education in the communities we serve.</p></div>
       </div>
@@ -548,8 +548,8 @@ founder = '''
   </div>
 </section>
 ''' + CTA
-page("founder.html", "Our Founder — Prophetic Intercession",
-     "Meet the founder and host of Prophetic Intercession.", founder)
+page("convener.html", "Our Convener — Prophetic Intercession",
+     "Meet the convener and host of Prophetic Intercession.", founder)
 
 # ======================= OUTREACH =======================
 outreach = page_hero("unity-hands.jpg", "Outreach", "Prayer with hands and feet",
@@ -935,3 +935,9 @@ testimonies = page_hero("vision-sunrise.jpg", "Testimonies", "Answered prayers",
 page("testimonies.html", "Testimonies — Prophetic Intercession",
      "Answered prayers and testimonies from the Prophetic Intercession family.", testimonies)
 print("built")
+
+# old URL -> convener page
+with open(os.path.join(R, "founder.html"), "w") as f:
+    f.write('<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Our Convener — Prophetic Intercession</title>'
+            '<meta http-equiv="refresh" content="0; url=convener.html"><link rel="canonical" href="convener.html"></head>'
+            '<body><a href="convener.html">Continue to Our Convener</a></body></html>\n')
