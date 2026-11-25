@@ -781,3 +781,26 @@ body { letter-spacing: .005em; }
   .give-seed .ministry-card h3 { font-size: 1rem; }
   .give-seed .ministry-card .sub { font-size: .78rem; }
 }
+
+/* ---------- mobile menu fix: full-height solid panel ---------- */
+@media (max-width: 960px) {
+  /* backdrop-filter traps fixed children inside the header, so drop it while the menu is open */
+  body.nav-open .site-header { backdrop-filter: none; -webkit-backdrop-filter: none; background: var(--black); }
+  .nav-links {
+    top: 0; right: 0; bottom: 0; height: 100vh; height: 100dvh;
+    background: var(--black); overflow-y: auto; overscroll-behavior: contain;
+    padding: 96px 32px 40px; gap: 1.1rem; z-index: 55;
+    visibility: hidden; transition: transform .4s var(--ease), visibility 0s linear .4s;
+  }
+  body.nav-open .nav-links { visibility: visible; transition: transform .4s var(--ease), visibility 0s; }
+  .nav-links li { opacity: 0; transform: translateX(16px); transition: opacity .35s var(--ease), transform .35s var(--ease); }
+  body.nav-open .nav-links li { opacity: 1; transform: none; }
+  body.nav-open .nav-links li:nth-child(2) { transition-delay: .03s; } body.nav-open .nav-links li:nth-child(3) { transition-delay: .06s; }
+  body.nav-open .nav-links li:nth-child(4) { transition-delay: .09s; } body.nav-open .nav-links li:nth-child(5) { transition-delay: .12s; }
+  body.nav-open .nav-links li:nth-child(6) { transition-delay: .15s; } body.nav-open .nav-links li:nth-child(7) { transition-delay: .18s; }
+  body.nav-open .nav-links li:nth-child(8) { transition-delay: .21s; } body.nav-open .nav-links li:nth-child(9) { transition-delay: .24s; }
+  body.nav-open .nav-links li:nth-child(10) { transition-delay: .27s; }
+  .nav-backdrop { position: fixed; inset: 0; background: rgba(13,11,12,.6); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); z-index: 45; opacity: 0; pointer-events: none; transition: opacity .35s; }
+  body.nav-open .nav-backdrop { opacity: 1; pointer-events: auto; }
+  body.nav-open { overflow: hidden; }
+}

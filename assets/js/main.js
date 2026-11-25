@@ -23,6 +23,14 @@
   // Mobile menu
   var toggle = document.querySelector(".menu-toggle");
   if (toggle) {
+    // dimmed backdrop behind the mobile menu; tapping it closes the menu
+    var backdrop = document.createElement("div");
+    backdrop.className = "nav-backdrop";
+    document.body.appendChild(backdrop);
+    backdrop.addEventListener("click", function () {
+      body.classList.remove("nav-open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
     toggle.addEventListener("click", function () {
       var open = body.classList.toggle("nav-open");
       toggle.setAttribute("aria-expanded", String(open));
