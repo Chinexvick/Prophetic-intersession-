@@ -6,9 +6,8 @@
   // SITE SETTINGS — fill these in when the ministry confirms them.
   // contactEmail: where prayer requests / contact messages are sent.
   // ------------------------------------------------------------------
-  var CONFIG = {
-    contactEmail: "" // e.g. "hello@propheticintercession.org"
-  };
+  // Settings live in assets/js/content.js (PI_SITE).
+  var CONFIG = window.PI_SITE || { contactEmail: "" };
 
   var body = document.body;
   var header = document.querySelector(".site-header");
@@ -115,7 +114,7 @@
       var lines = [];
       data.forEach(function (v, k) { if (String(v).trim()) lines.push(k.charAt(0).toUpperCase() + k.slice(1) + ": " + v); });
       if (!CONFIG.contactEmail) {
-        toast("Our prayer line email is being set up — please check back soon.");
+        toast("Our email line is being set up. Please reach us on our WhatsApp prayer group for now.");
         return;
       }
       window.location.href = "mailto:" + CONFIG.contactEmail +

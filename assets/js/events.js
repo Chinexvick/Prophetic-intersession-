@@ -17,7 +17,7 @@ var PI_EVENTS = [
     scripture: "Psalm 85:6",
     flyer: "assets/img/flyer-24hr-prayer-stretch.jpg",
     description:
-      "Twenty-four unbroken hours of worship, travail and prophetic intercession, crying out with the Psalmist: “Wilt thou not revive us again: that thy people may rejoice in thee?” Intercessors from Africa and the Americas joined on Zoom to stand in the gap for families, nations and the next move of God.",
+      "Twenty-four unbroken hours of worship, travail and prophetic intercession, crying out with the Psalmist: “Wilt thou not revive us again: that thy people may rejoice in thee?” Intercessors from Africa, North America and around the world joined on Zoom to stand in the gap for families, nations and the next move of God.",
     link: ""
   }
   // , {

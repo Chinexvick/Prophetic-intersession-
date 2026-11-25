@@ -1,0 +1,258 @@
+/* =====================================================================
+   SITE CONTENT — edit this file to update links, prophetic words,
+   media posts (flyers, videos, messages) and testimonies.
+   Leave a link as "" and the site shows "coming soon" instead.
+   ===================================================================== */
+
+var PI_SITE = {
+  whatsapp: "https://chat.whatsapp.com/L8ikJexNYyWISJi5p15JfF", // from the QR code on the 24hr Prayer Stretch flier
+  youtube: "",      // e.g. "https://www.youtube.com/@propheticintercession"
+  tiktok: "",       // e.g. "https://www.tiktok.com/@propheticintercession"
+  zoom: "",         // standing Zoom link, if there is one
+  contactEmail: ""  // where prayer requests, testimonies and watch sign-ups are emailed
+};
+
+/* Current prayer focus (shown on Home and the Prayer page) */
+var PI_FOCUS = {
+  label: "Prayer focus",
+  title: "Revival",
+  scripture: "Psalm 85:6",
+  text: "“Wilt thou not revive us again: that thy people may rejoice in thee?”"
+};
+
+/* PROPHETIC WORDS — newest first is automatic (sorted by date).
+   period: e.g. "Word for the week" or "Word for the month"         */
+var PI_WORDS = [
+  // {
+  //   title: "Title of the word",
+  //   period: "Word for the month · December 2026",
+  //   date: "2026-12-01",
+  //   image: "assets/img/word-dec-2026.jpg",   // flier, optional
+  //   scripture: "Isaiah 43:19",
+  //   text: "Full text of the prophetic word…"
+  // }
+];
+
+/* MEDIA — flyers, videos and messages (the ministry's blog).
+   type: "flyer" | "video" | "message"
+   video: youtube = the ID after watch?v=   (or use url for TikTok etc.) */
+var PI_MEDIA = [
+  {
+    type: "flyer",
+    title: "24 Hours Prayer Stretch",
+    date: "2026-11-06",
+    image: "assets/img/flyer-24hr-prayer-stretch.jpg",
+    text: "Fri. Nov 13th – Sat. Nov 14th, 2026 on Zoom · Psalm 85:6"
+  },
+  {
+    type: "flyer",
+    title: "Partner with Prophetic Intercession",
+    date: "2026-11-01",
+    image: "assets/img/flyer-partner.jpg",
+    text: "Support the ministry through MTN MoMo, Zelle or BNB / USDT (BEP-20)."
+  }
+  // , { type: "video", title: "Message title", date: "2026-12-01", youtube: "VIDEO_ID", text: "Short description" }
+  // , { type: "video", title: "TikTok live replay", date: "2026-12-01", url: "https://www.tiktok.com/@.../video/...", image: "assets/img/thumb.jpg" }
+  // , { type: "message", title: "Message title", date: "2026-12-01", text: "Full message text…" }
+];
+
+/* TESTIMONIES — only add testimonies shared with permission. */
+var PI_TESTIMONIES = [
+  // { text: "What God did…", name: "First name or Anonymous", place: "City, Country" }
+];
+
+/* ===================================================================== */
+(function () {
+  "use strict";
+  function $(s, r) { return (r || document).querySelector(s); }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  function fmtDate(d) {
+    var dt = new Date(d + (String(d).length === 10 ? "T12:00:00" : ""));
+    return isNaN(dt) ? "" : dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+  }
+  function byDateDesc(a, b) { return new Date(b.date) - new Date(a.date); }
+
+  // ---- Social links: <a data-link="whatsapp|youtube|tiktok|zoom"> ----
+  document.querySelectorAll("[data-link]").forEach(function (a) {
+    var url = PI_SITE[a.getAttribute("data-link")];
+    if (url) { a.href = url; a.target = "_blank"; a.rel = "noopener"; }
+    else {
+      a.removeAttribute("href");
+      a.classList.add("is-soon");
+      a.setAttribute("aria-disabled", "true");
+      var soon = a.getAttribute("data-soon");
+      if (soon) a.textContent = soon;
+    }
+  });
+
+  // ---- Prayer focus ----
+  document.querySelectorAll("[data-focus]").forEach(function (el) {
+    el.innerHTML = '<span class="eyebrow">' + esc(PI_FOCUS.label) + '</span>' +
+      '<h3>' + esc(PI_FOCUS.title) + '</h3>' +
+      '<blockquote>' + esc(PI_FOCUS.text) + '</blockquote>' +
+      '<cite>' + esc(PI_FOCUS.scripture) + '</cite>';
+  });
+
+  // ---- Next prayer session card (needs events.js loaded first) ----
+  var next = $("[data-next-session]");
+  if (next && typeof PI_EVENTS !== "undefined") {
+    var now = Date.now();
+    var up = PI_EVENTS.filter(function (e) { return new Date(e.end).getTime() >= now; })
+      .sort(function (a, b) { return new Date(a.start) - new Date(b.start); })[0];
+    if (up) {
+      next.innerHTML = '<span class="eyebrow">Next prayer session</span>' +
+        '<h3>' + esc(up.title) + '</h3><div class="countdown" aria-live="polite"></div>' +
+        '<p class="small">' + esc(up.dateText) + '<br>' + esc(up.timeText) + '</p>' +
+        '<a class="btn btn-gold" href="events.html">Event details</a>';
+      var cd = $(".countdown", next);
+      var tick = function () {
+        var ms = new Date(up.start).getTime() - Date.now();
+        if (ms <= 0) { cd.innerHTML = '<span class="live">● Live now</span>'; return; }
+        var d = Math.floor(ms / 864e5), h = Math.floor(ms / 36e5) % 24, m = Math.floor(ms / 6e4) % 60, s = Math.floor(ms / 1e3) % 60;
+        var p = function (n) { return (n < 10 ? "0" : "") + n; };
+        cd.innerHTML = [[d, "days"], [h, "hrs"], [m, "min"], [s, "sec"]].map(function (x) {
+          return '<div><strong>' + p(x[0]) + '</strong><span>' + x[1] + '</span></div>';
+        }).join("");
+      };
+      tick(); setInterval(tick, 1000);
+    } else {
+      next.innerHTML = '<span class="eyebrow">Next prayer session</span>' +
+        '<h3>Announcing soon</h3>' +
+        '<p class="small">Join our WhatsApp prayer group to be the first to receive the next flier and joining link.</p>' +
+        (PI_SITE.whatsapp ? '<a class="btn btn-whatsapp" href="' + esc(PI_SITE.whatsapp) + '" target="_blank" rel="noopener">Join on WhatsApp</a>' : '');
+    }
+  }
+
+  // ---- Prophetic words ----
+  var wordsEl = $("#prophetic-words");
+  if (wordsEl) {
+    var words = PI_WORDS.slice().sort(byDateDesc);
+    if (!words.length) {
+      wordsEl.innerHTML = emptyState("A fresh word is coming",
+        "Prophetic words for the week and for the month will be posted here. Join our WhatsApp prayer group to receive them as soon as they are released.", true);
+    } else {
+      wordsEl.innerHTML = words.map(function (w, i) {
+        return '<article class="word-card' + (i === 0 ? " featured" : "") + ' reveal in">' +
+          (w.image ? '<a class="word-img" href="' + esc(w.image) + '" target="_blank" rel="noopener"><img src="' + esc(w.image) + '" alt="' + esc(w.title) + '" loading="lazy"></a>' : "") +
+          '<div class="word-body"><span class="badge upcoming">' + esc(w.period || "Prophetic word") + '</span>' +
+          '<h3>' + esc(w.title) + '</h3>' +
+          (w.scripture ? '<div class="event-date">' + esc(w.scripture) + '</div>' : "") +
+          '<div class="word-text">' + esc(w.text).replace(/\n/g, "<br>") + '</div>' +
+          '<small class="muted">' + fmtDate(w.date) + '</small></div></article>';
+      }).join("");
+    }
+  }
+
+  // ---- Media (blog) ----
+  var mediaEl = $("#media-grid");
+  if (mediaEl) {
+    var items = PI_MEDIA.slice().sort(byDateDesc);
+    var render = function (filter) {
+      var list = items.filter(function (m) { return filter === "all" || m.type === filter; });
+      if (!list.length) {
+        var label = { video: "Videos", flyer: "Flyers", message: "Messages" }[filter] || "Posts";
+        mediaEl.innerHTML = '<div class="media-empty">' + emptyState(label + " coming soon",
+          filter === "video" ? "Recorded prayer sessions and messages will appear here. Meanwhile, follow us on YouTube and TikTok." :
+          "New posts will appear here soon.", filter !== "video") +
+          (filter === "video" ? socialButtons() : "") + '</div>';
+        return;
+      }
+      mediaEl.innerHTML = list.map(mediaCard).join("");
+      mediaEl.querySelectorAll("[data-yt]").forEach(function (b) {
+        b.addEventListener("click", function () {
+          b.outerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(b.getAttribute("data-yt")) +
+            '?autoplay=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        });
+      });
+    };
+    document.querySelectorAll("[data-filter]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        document.querySelectorAll("[data-filter]").forEach(function (b) { b.classList.toggle("active", b === btn); b.setAttribute("aria-pressed", b === btn); });
+        render(btn.getAttribute("data-filter"));
+      });
+    });
+    render("all");
+  }
+
+  function mediaCard(m) {
+    var media = "";
+    if (m.type === "video" && m.youtube) {
+      media = '<button class="media-thumb video" data-yt="' + esc(m.youtube) + '" aria-label="Play ' + esc(m.title) + '">' +
+        '<img src="https://i.ytimg.com/vi/' + esc(m.youtube) + '/hqdefault.jpg" alt="" loading="lazy"><span class="play"></span></button>';
+    } else if (m.type === "video") {
+      media = '<a class="media-thumb video" href="' + esc(m.url) + '" target="_blank" rel="noopener">' +
+        (m.image ? '<img src="' + esc(m.image) + '" alt="" loading="lazy">' : '<div class="thumb-fallback"></div>') + '<span class="play"></span></a>';
+    } else if (m.type === "flyer") {
+      media = '<a class="media-thumb flyer" href="' + esc(m.image) + '" target="_blank" rel="noopener"><img src="' + esc(m.image) + '" alt="' + esc(m.title) + ' flier" loading="lazy"></a>';
+    }
+    var label = { video: "Video", flyer: "Flyer", message: "Message" }[m.type] || "Post";
+    return '<article class="media-card type-' + esc(m.type) + '">' + media +
+      '<div class="body"><span class="label">' + label + ' · ' + fmtDate(m.date) + '</span>' +
+      '<h3>' + esc(m.title) + '</h3>' +
+      (m.text ? '<p class="' + (m.type === "message" ? "message-text" : "sub") + '">' + esc(m.text).replace(/\n/g, "<br>") + '</p>' : "") +
+      '</div></article>';
+  }
+
+  // ---- Testimonies ----
+  var tEl = $("#testimonies");
+  if (tEl) {
+    tEl.innerHTML = PI_TESTIMONIES.length
+      ? PI_TESTIMONIES.map(function (t) {
+          return '<figure class="testimony reveal in"><blockquote>' + esc(t.text) + '</blockquote>' +
+            '<figcaption>— ' + esc(t.name || "Shared with permission") + (t.place ? ', ' + esc(t.place) : "") + '</figcaption></figure>';
+        }).join("")
+      : emptyState("Testimonies are being gathered",
+          "Has God answered prayer for you through this ministry? Share your testimony below, and with your permission it will be published here to encourage others.", false);
+  }
+
+  function emptyState(title, text, withWa) {
+    return '<div class="event-placeholder"><div class="icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.07-2.14-.22-4.05 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.15.43-2.29 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></div>' +
+      '<span class="eyebrow pink">Coming soon</span><h3>' + esc(title) + '</h3>' +
+      '<p class="muted" style="max-width:540px;margin-inline:auto">' + esc(text) + '</p>' +
+      (withWa && PI_SITE.whatsapp ? '<a class="btn btn-whatsapp" href="' + esc(PI_SITE.whatsapp) + '" target="_blank" rel="noopener">Join our WhatsApp</a>' : "") +
+      '</div>';
+  }
+  function socialButtons() {
+    var out = [["youtube", "YouTube"], ["tiktok", "TikTok"]].filter(function (s) { return PI_SITE[s[0]]; })
+      .map(function (s) { return '<a class="btn btn-outline-dark" href="' + esc(PI_SITE[s[0]]) + '" target="_blank" rel="noopener">' + s[1] + '</a>'; });
+    return out.length ? '<div class="hero-row" style="justify-content:center;margin-top:1rem">' + out.join("") + '</div>' : "";
+  }
+
+  // ---- Bible reading tracker (saved on this device) ----
+  var tracker = $("#bible-tracker");
+  if (tracker) {
+    var KEY = "pi-bible-tracker";
+    var state;
+    try { state = JSON.parse(localStorage.getItem(KEY)) || null; } catch (e) { state = null; }
+    if (!state) state = { plan: 21, done: [] };
+    var save = function () { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} };
+    var draw = function () {
+      var n = state.plan, done = state.done.filter(function (d) { return d <= n; });
+      var pct = Math.round(done.length / n * 100);
+      var days = "";
+      for (var i = 1; i <= n; i++) {
+        var on = done.indexOf(i) > -1;
+        days += '<button type="button" class="day' + (on ? " on" : "") + '" data-day="' + i + '" aria-pressed="' + on + '">' + i + '</button>';
+      }
+      tracker.querySelector(".days").innerHTML = days;
+      tracker.querySelector(".bar span").style.width = pct + "%";
+      tracker.querySelector(".pct-text").textContent = done.length + " of " + n + " days · " + pct + "%";
+      tracker.querySelectorAll("[data-plan]").forEach(function (b) { b.classList.toggle("active", +b.getAttribute("data-plan") === n); });
+    };
+    tracker.addEventListener("click", function (e) {
+      var d = e.target.closest("[data-day]"), p = e.target.closest("[data-plan]"), r = e.target.closest("[data-reset]");
+      if (d) {
+        var k = +d.getAttribute("data-day"), i = state.done.indexOf(k);
+        if (i > -1) state.done.splice(i, 1); else state.done.push(k);
+      } else if (p) { state.plan = +p.getAttribute("data-plan"); }
+      else if (r) { state.done = []; }
+      else return;
+      save(); draw();
+    });
+    draw();
+  }
+})();
