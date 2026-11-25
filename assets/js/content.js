@@ -75,14 +75,8 @@ var PI_MEDIA = [
   { type: "video", title: "My Glory Must Manifest — Day 1: Stop the Hiding!", date: "2026-04", youtube: "twKSkp44n1Q", text: "First night of the five-day “My Glory Must Manifest” prayer series." },
   { type: "video", title: "My Glory Must Manifest — Day 5: Grand Finale Breakthrough", date: "2026-04", youtube: "FY3Egdh5RiY" },
   { type: "video", title: "Urgent Prophetic Word Before You Cross Over to 2026", date: "2025-12", youtube: "Dd-YtdZK7VM" },
-  { type: "video", title: "1 Hour of Prophetic Intercession and Groanings", date: "2024", youtube: "hGukZ_Xq2uo", text: "An hour of travail and intercession." },
-  {
-    type: "flyer",
-    title: "24 Hours Prayer Stretch",
-    date: "2026-11-06",
-    image: "assets/img/flyer-24hr-prayer-stretch.jpg",
-    text: "Fri. Nov 13th – Sat. Nov 14th, 2026 on Zoom · Psalm 85:6"
-  }
+  { type: "video", title: "1 Hour of Prophetic Intercession and Groanings", date: "2024", youtube: "hGukZ_Xq2uo", text: "An hour of travail and intercession." }
+  // , { type: "flyer", title: "Flier title", date: "2026-12-01", image: "assets/img/flyer-name.jpg", text: "Short description" }
   // , { type: "video", title: "Message title", date: "2026-12-01", youtube: "VIDEO_ID", text: "Short description" }
   // , { type: "video", title: "TikTok live replay", date: "2026-12-01", url: "https://www.tiktok.com/@.../video/...", image: "assets/img/thumb.jpg" }
   // , { type: "message", title: "Message title", date: "2026-12-01", text: "Full message text…" }

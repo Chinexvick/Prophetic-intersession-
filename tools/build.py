@@ -212,7 +212,7 @@ home = f'''
           <span class="more">Read the words</span>
         </a>
         <a class="feature-card" href="media.html">
-          <img src="assets/img/flyer-24hr-prayer-stretch.jpg" alt="" loading="lazy" style="object-position:center 85%">
+          <img src="assets/img/gallery/g04-sm.jpg" alt="" loading="lazy" style="object-position:center 30%">
           <div><span class="label">Media</span><h3>Flyers &amp; Videos</h3></div>
           <span class="more">Browse media</span>
         </a>

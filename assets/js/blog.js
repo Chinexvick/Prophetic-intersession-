@@ -18,15 +18,15 @@ var PI_POSTS = [
     date: "2026-11-13",
     author: "Prophetic Intercession",
     category: "Events",
-    cover: "assets/img/flyer-24hr-prayer-stretch.jpg",
-    coverPosition: "center 20%",
+    cover: "assets/img/gallery/g08.jpg",
+    coverPosition: "center 25%",
     excerpt: "For twenty-four hours on Zoom, intercessors across the nations stood together on the watch, crying out with the Psalmist for revival.",
     body: [
       "From Friday, November 13th to Saturday, November 14th, 2026, Prophetic Intercession held a **24 Hours Prayer Stretch** on Zoom, hosted by our convener, the Prophetic Intercessor.",
       "> Wilt thou not revive us again: that thy people may rejoice in thee? — Psalm 85:6",
       "## One altar, many time zones",
       "The stretch kicked off at **6PM WAT** (11AM CST · 12 noon EST), so intercessors from Africa, North America and around the world could take their place on the altar.",
-      "![The 24 Hours Prayer Stretch flier](assets/img/flyer-24hr-prayer-stretch.jpg \"The official flier for the 24 Hours Prayer Stretch\")",
+      "![Prophetic Intercessor in fervent prayer](assets/img/gallery/g03.jpg \"Standing on the watch in prayer\")",
       "## Don’t miss the next one",
       "Prayer stretches are announced first in our WhatsApp prayer group. Join the family so you receive the next flier and the Zoom link as soon as they are released.",
       "https://chat.whatsapp.com/Fed6pLcGBTfJ7N0FmaZfYB"

@@ -900,3 +900,19 @@ body { letter-spacing: .005em; }
 @media (max-width: 860px) { .watch-card { grid-template-columns: 1fr; } .status-legend > div { grid-template-columns: 1fr; gap: 6px; } .status-legend .tag { justify-self: start; } }
 /* the outreach-card .status badge is absolutely positioned; watch tags must flow inline */
 .tag.status { position: static; top: auto; left: auto; }
+
+/* uniform media cards: same image shape, same height, clamped text */
+.media-grid { align-items: stretch; }
+.media-card { display: flex; flex-direction: column; height: 100%; }
+.media-thumb img, .media-thumb.flyer img, .media-card iframe, .thumb-fallback { aspect-ratio: 16 / 9; object-position: center 30%; }
+.media-card .body { flex: 1; display: flex; flex-direction: column; }
+.media-card h3 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.6em; }
+.media-card .sub, .media-card .message-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.media-card .body { min-height: 158px; }
+.media-card .sub, .media-card .message-text { min-height: 2.9em; }
+.media-card .body:not(:has(.sub)):not(:has(.message-text))::after { content: ""; display: block; min-height: 2.9em; }
+.media-card .body { min-height: 0; }
+.media-card .label { display: block; height: 1.2em; overflow: hidden; }
+.media-card h3 { height: 2.6em; min-height: 0; line-height: 1.3; }
+.media-card .sub, .media-card .message-text, .media-card .body:not(:has(.sub)):not(:has(.message-text))::after { height: 2.9em; min-height: 0; line-height: 1.45; margin: 0; }
+.media-card .sub, .media-card .message-text, .media-card .body:not(:has(.sub)):not(:has(.message-text))::after { font-size: .9rem; }

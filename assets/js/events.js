@@ -15,10 +15,10 @@ var PI_EVENTS = [
     venue: "Zoom",
     host: "Prophetic Intercessor",
     scripture: "Psalm 85:6",
-    flyer: "assets/img/flyer-24hr-prayer-stretch.jpg",
+    flyer: "assets/img/gallery/g08.jpg",
     description:
       "Twenty-four unbroken hours of worship, travail and prophetic intercession, crying out with the Psalmist: “Wilt thou not revive us again: that thy people may rejoice in thee?” Intercessors from Africa, North America and around the world joined on Zoom to stand in the gap for families, nations and the next move of God.",
-    link: ""
+    link: "blog-post.html?p=24-hours-prayer-stretch"
   }
   // , {
   //   title: "New Event Title",
@@ -65,10 +65,10 @@ var PI_EVENTS = [
     } else if (!isPast) {
       action = '<a class="btn btn-pink" href="connect.html">Get the joining details</a>';
     } else {
-      action = '<a class="btn btn-outline-dark" href="' + esc(e.flyer) + '" target="_blank" rel="noopener">View flier</a>';
+      action = e.link ? '<a class="btn btn-outline-dark" href="' + esc(e.link) + '">Read the recap</a>' : "";
     }
     return '<article class="event-card reveal in">' +
-      '<div class="flyer"><img src="' + esc(e.flyer) + '" alt="' + esc(e.title) + ' flier" loading="lazy"></div>' +
+      '<div class="flyer"><img src="' + esc(e.flyer) + '" alt="' + esc(e.title) + '" loading="lazy"></div>' +
       '<div class="info">' +
         '<span class="badge ' + (isPast ? "past" : "upcoming") + '">' + (isPast ? "Recent gathering" : "Upcoming") + '</span>' +
         '<h3>' + esc(e.title) + '</h3>' +
