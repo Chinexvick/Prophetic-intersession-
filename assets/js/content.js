@@ -249,34 +249,62 @@ var PI_TESTIMONIES = [
 
   // ---- Media (blog) ----
   var mediaEl = $("#media-grid");
+  var mediaFilter = "all";
+  var renderMedia = function () {
+    if (!mediaEl) return;
+    var filter = mediaFilter;
+    var list = PI_MEDIA.slice().sort(byDateDesc).filter(function (m) { return filter === "all" || m.type === filter; });
+    if (!list.length) {
+      var label = { video: "Videos", flyer: "Flyers", message: "Messages" }[filter] || "Posts";
+      mediaEl.innerHTML = '<div class="media-empty">' + emptyState(label + " coming soon",
+        filter === "video" ? "Recorded prayer sessions and messages will appear here. Meanwhile, follow us on YouTube and TikTok." :
+        "New posts will appear here soon.", filter !== "video") +
+        (filter === "video" ? socialButtons() : "") + '</div>';
+      return;
+    }
+    mediaEl.innerHTML = list.map(mediaCard).join("");
+  };
   if (mediaEl) {
-    var items = PI_MEDIA.slice().sort(byDateDesc);
-    var render = function (filter) {
-      var list = items.filter(function (m) { return filter === "all" || m.type === filter; });
-      if (!list.length) {
-        var label = { video: "Videos", flyer: "Flyers", message: "Messages" }[filter] || "Posts";
-        mediaEl.innerHTML = '<div class="media-empty">' + emptyState(label + " coming soon",
-          filter === "video" ? "Recorded prayer sessions and messages will appear here. Meanwhile, follow us on YouTube and TikTok." :
-          "New posts will appear here soon.", filter !== "video") +
-          (filter === "video" ? socialButtons() : "") + '</div>';
-        return;
-      }
-      mediaEl.innerHTML = list.map(mediaCard).join("");
-    };
     document.querySelectorAll("[data-filter]").forEach(function (btn) {
       btn.addEventListener("click", function () {
         document.querySelectorAll("[data-filter]").forEach(function (b) { b.classList.toggle("active", b === btn); b.setAttribute("aria-pressed", b === btn); });
-        render(btn.getAttribute("data-filter"));
+        mediaFilter = btn.getAttribute("data-filter");
+        renderMedia();
       });
     });
-    render("all");
+    renderMedia();
   }
 
   // Latest videos on the home page
   var latest = $("#latest-videos");
-  if (latest) {
+  var renderLatest = function () {
+    if (!latest) return;
     var vids = PI_MEDIA.filter(function (m) { return m.type === "video"; }).sort(byDateDesc).slice(0, 3);
     latest.innerHTML = vids.length ? vids.map(mediaCard).join("") : "";
+  };
+  renderLatest();
+
+  // ---- New YouTube uploads appear automatically ----
+  // /api/youtube reads the channel feed (cached ~5 min); anything not already
+  // in PI_MEDIA is merged in and the lists re-render. If the feed is down,
+  // the built-in list above simply stays.
+  if ((mediaEl || latest) && window.fetch && location.protocol.indexOf("http") === 0) {
+    fetch("/api/youtube", { headers: { Accept: "application/json" } })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (data) {
+        if (!data || !data.videos || !data.videos.length) return;
+        var have = {}, titles = {};
+        var norm = function (t) { return String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim(); };
+        PI_MEDIA.forEach(function (m) { if (m.youtube) have[m.youtube] = true; titles[norm(m.title)] = true; });
+        var added = 0;
+        data.videos.forEach(function (v) {
+          if (!v.youtube || have[v.youtube] || titles[norm(v.title)]) return;
+          PI_MEDIA.push({ type: "video", title: v.title, date: v.date, youtube: v.youtube, isNew: true }); // descriptions are channel boilerplate, so title + date only
+          have[v.youtube] = true; titles[norm(v.title)] = true; added++;
+        });
+        if (added) { renderMedia(); renderLatest(); }
+      })
+      .catch(function () {});
   }
 
   // Click-to-play YouTube anywhere on the site (loads the player only when clicked)
