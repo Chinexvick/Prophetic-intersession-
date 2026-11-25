@@ -564,3 +564,32 @@ p { margin: 0 0 1em; }
   .nav-links a { font-size: .66rem; letter-spacing: .12em; }
   .brand-text span { display: none; }
 }
+
+/* =========================================================
+   v3 — ministry document content + YouTube
+   ========================================================= */
+.hero .eyebrow { color: var(--gold-soft); }
+.vm-card { border: 1px solid rgba(201,162,75,.35); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 40px); background: rgba(255,255,255,.03); }
+.vm-text { font-family: var(--serif); font-style: italic; font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.35; color: #fff; }
+.vm-card small { color: var(--gold-soft); letter-spacing: .06em; font-weight: 600; }
+.mandates { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.mandate { display: grid; grid-template-columns: 52px 1fr; gap: 18px; background: var(--white); border-radius: var(--radius); padding: 24px; border: 1px solid var(--line); box-shadow: 0 10px 30px -20px rgba(0,0,0,.3); }
+.mandate:last-child { grid-column: 1 / -1; }
+.mandate .num { width: 52px; height: 52px; border-radius: 50%; background: var(--black); color: var(--gold-soft); display: grid; place-items: center; font-weight: 800; font-size: 1.1rem; }
+.mandate h3 { font-size: 1.12rem; margin-bottom: .4rem; }
+.mandate p { color: var(--muted); font-size: .94rem; margin-bottom: .6rem; }
+.mandate small, .tile .ref { display: block; color: var(--gold-deep); font-weight: 600; font-size: .78rem; margin-top: .6rem; }
+@media (max-width: 760px) { .mandates { grid-template-columns: 1fr; } }
+.big-quote { font-family: var(--serif); font-style: italic; font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.35; margin: 0 0 1.2rem; }
+.slogan { display: flex; flex-wrap: wrap; gap: 10px; }
+.slogan span { border: 1px solid var(--gold); color: var(--gold-soft); border-radius: 999px; padding: .55rem 1rem; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; }
+.anthem { background: linear-gradient(160deg, rgba(229,119,155,.18), rgba(201,162,75,.08)); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-lg); padding: clamp(24px, 4vw, 40px); }
+.anthem p { font-family: var(--serif); font-size: 1.25rem; line-height: 1.55; color: #fff; }
+.pillars .pillar h3 { font-size: .98rem; }
+.video-frame { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); background: var(--black); }
+.video-frame iframe, .video-frame .media-thumb img { width: 100%; aspect-ratio: 16 / 9; border: 0; display: block; object-fit: cover; }
+.yt-banner { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; background: var(--black); color: #fff; border-radius: var(--radius-lg); padding: 22px 26px; margin-bottom: 28px; }
+.yt-banner strong { font-size: 1.1rem; }
+.yt-banner small { display: block; color: rgba(255,255,255,.7); }
+.btn-yt { background: #ff0033; color: #fff; }
+.btn-yt:hover { background: #d1002a; }

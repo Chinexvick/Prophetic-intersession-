@@ -75,8 +75,8 @@ FOOTER = '''<footer class="site-footer">
     <div class="footer-grid">
       <div class="footer-brand">
         <img src="assets/img/logo.png" alt="Prophetic Intercession logo" width="72" height="72">
-        <p class="tag">…Praying, Reaching, Transforming Lives</p>
-        <p>A prophetic prayer ministry standing in the gap for nations, and carrying the love of Jesus to prisons, rural communities and children who need a home.</p>
+        <p class="tag">Raising a Tribe. Birthing Revival. Transforming Nations.</p>
+        <p>A global interdenominational ministry — a people upon the watch, a people consecrated to the altar.</p>
       </div>
       <div>
         <h4>Ministry</h4>
@@ -110,7 +110,7 @@ FOOTER = '''<footer class="site-footer">
     </div>
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Prophetic Intercession. All rights reserved.</span>
-      <span>“Wilt thou not revive us again?” — Psalm 85:6</span>
+      <span>“I will stand upon my watch…” — Habakkuk 2:1</span>
     </div>
   </div>
 </footer>'''
@@ -154,8 +154,9 @@ home = f'''
   <div class="container hero-content">
     <div class="hero-grid">
       <div>
+        <span class="eyebrow">A global interdenominational ministry</span>
         <h1>Prophetic Intercession</h1>
-        <p class="tagline">…Praying, Reaching, Transforming Lives</p>
+        <p class="tagline">Raising a Tribe. Birthing Revival. Transforming Nations.</p>
         <div class="hero-actions">
           <a class="btn btn-whatsapp" data-link="whatsapp" href="channels.html">{WA_ICON} Join the Prayer Group</a>
           <a class="btn btn-gold" href="prayer.html">Send a Prayer Request</a>
@@ -235,16 +236,21 @@ home = f'''
 <section class="section">
   <div class="container focus-strip">
     <div class="reveal">
-      <span class="eyebrow">Our calling</span>
-      <h2>A people given to prayer, standing in the gap</h2>
-      <p class="muted">Prophetic Intercession is a global prayer community raising watchmen who hear God, pray with accuracy and stand in the gap for families, churches and nations.</p>
+      <span class="eyebrow">Our vision</span>
+      <h2>Raising a prophetic and intercessory tribe</h2>
+      <p class="muted">To raise a generation of prophetic intercessors who will discern the heart of God, birth His purposes and manifest His glory across the nations.</p>
+      <p class="muted"><strong style="color:var(--ink)">Foundational conviction:</strong> Everything by priesthood.</p>
       <div class="focus-box mt-2" data-focus></div>
     </div>
     <div class="pillars">
-      <div class="pillar reveal"><span class="num">1</span><div><h3>Intercession</h3><p>Persistent, Spirit-led prayer for people and nations.</p></div></div>
-      <div class="pillar reveal"><span class="num">2</span><div><h3>Prophetic Ministry</h3><p>Hearing and declaring what God is saying — words for the week and the month.</p></div></div>
-      <div class="pillar reveal"><span class="num">3</span><div><h3>Raising Watchmen</h3><p>Training believers to guard their families, churches and cities in prayer.</p></div></div>
-      <div class="pillar reveal"><span class="num">4</span><div><h3>Reaching Lives</h3><p>Carrying prayer into prisons, rural communities and the lives of orphaned children.</p></div></div>
+      <div class="pillar reveal"><span class="num">1</span><div><h3>Raising a Prophetic &amp; Intercessory Generation</h3><p>A consecrated people who discern His voice and stand in the gap.</p></div></div>
+      <div class="pillar reveal"><span class="num">2</span><div><h3>Birthing &amp; Sustaining Genuine Revival</h3><p>Contending for a fresh move of God in the Church and the nations.</p></div></div>
+      <div class="pillar reveal"><span class="num">3</span><div><h3>Awakening Gifts, Callings &amp; Destinies</h3><p>Discovering, developing and deploying God-given gifts.</p></div></div>
+      <div class="pillar reveal"><span class="num">4</span><div><h3>Demonstrating the Risen Christ</h3><p>Healing, miracles, signs and wonders that glorify Jesus.</p></div></div>
+      <div class="pillar reveal"><span class="num">5</span><div><h3>Evangelism</h3><p>Interceding for the lost and bringing them to Jesus Christ.</p></div></div>
+      <div class="pillar reveal"><span class="num">6</span><div><h3>A Global Network of Prayer</h3><p>Uniting believers across denominations, cultures and nations.</p></div></div>
+      <div class="pillar reveal"><span class="num">7</span><div><h3>Compassion Through Social Impact</h3><p>Reaching the vulnerable and restoring dignity.</p></div></div>
+      <a class="btn btn-outline-dark reveal" href="about.html#mandate" style="justify-self:start">Our sevenfold mandate</a>
     </div>
   </div>
 </section>
@@ -318,6 +324,14 @@ home = f'''
   </div>
 </section>
 
+<section class="section">
+  <div class="container">
+    <div class="section-head reveal"><h2>Latest on YouTube</h2><a class="btn btn-outline-dark" data-link="youtube" href="media.html">Visit channel</a></div>
+    <div class="media-grid" id="latest-videos"></div>
+    <div class="center mt-2 reveal"><a class="btn btn-gold" href="media.html">More videos &amp; flyers</a></div>
+  </div>
+</section>
+
 <section class="founder-band">
   <div class="container grid">
     <div class="founder-photo reveal"><img src="assets/img/founder.jpg" alt="The founder of Prophetic Intercession" loading="lazy"><span class="pin">Host · Prophetic Intercessor</span></div>
@@ -325,7 +339,7 @@ home = f'''
       <div class="founder-card reveal">
         <span class="eyebrow">Ministry leadership</span>
         <h2><span class="serif">Founder &amp; Host</span>Prophetic Intercessor</h2>
-        <p>Called to the place of prayer, our founder carries a burden for revival and for people the world often forgets. Through Prophetic Intercession she gathers believers across nations to pray, then leads them out to reach prisoners, rural communities and orphaned children with the love of Christ.</p>
+        <p>Called to the place of prayer, our founder carries a burden for revival and for raising a generation of prophetic intercessors. Through Prophetic Intercession she gathers believers across nations to pray, then leads them out to reach prisoners, rural communities and orphaned children with the love of Christ.</p>
         <a class="btn btn-gold" href="founder.html">Learn more</a>
       </div>
     </div>
@@ -335,9 +349,9 @@ home = f'''
 <section class="section">
   <div class="container">
     <div class="scripture reveal">
-      <span class="eyebrow pink">Our cry</span>
-      <blockquote>“Wilt thou not revive us again: that thy people may rejoice in thee?”</blockquote>
-      <cite>Psalm 85:6</cite>
+      <span class="eyebrow pink">Upon the watch</span>
+      <blockquote>“I will stand upon my watch, and set me upon the tower, and will watch to see what he will say unto me…”</blockquote>
+      <cite>Habakkuk 2:1</cite>
     </div>
   </div>
 </section>
@@ -365,15 +379,16 @@ page("index.html", "Prophetic Intercession — Praying, Reaching, Transforming L
 def tile(icon, h, p):
     return f'<div class="tile reveal"><div class="icon">{ICON[icon]}</div><h3>{h}</h3><p>{p}</p></div>'
 
-about = page_hero("vision-sunrise.jpg", "About us", "A house of prayer without walls",
-                  "We pray, we reach, and we watch God transform lives — one altar, one prison cell, one village and one child at a time.", "70% center") + f'''
+about = page_hero("vision-sunrise.jpg", "A global interdenominational ministry", "Raising a prophetic and intercessory tribe",
+                  "Prophetic Intercession is a global prophetic and intercessory movement — interdenominational, Christ-centred and led by the Spirit of God.", "70% center") + f'''
 <section class="section">
   <div class="container grid-2">
     <div class="reveal">
-      <span class="eyebrow">Our story</span>
-      <h2>Born on the altar of prayer</h2>
-      <p>Prophetic Intercession began with a simple conviction: nothing of eternal value happens without prayer. What started as a burden in the heart of our founder has grown into a gathering of intercessors who meet online from different nations and time zones to seek God together.</p>
-      <p>As we prayed, God began to open our eyes to people around us — the prisoner who feels forgotten, the rural village far from help, the child without a family. Our prayers became footsteps. Today, intercession and outreach move together in everything we do.</p>
+      <span class="eyebrow">The birth of the vision</span>
+      <h2>From a burden to a global mandate</h2>
+      <p>The vision of Prophetic Intercession was birthed in the wake of 2020, out of a deep spiritual burden for prayer, revival and the emergence of a generation of prophetic intercessors.</p>
+      <p>The vision began to find full expression in 2023 through YouTube, where people gathered for extended hours of prayer and intercession, standing in the gap for individuals, families and nations.</p>
+      <p>What began as a burden to pray for people has grown into a greater mandate: raising a global prophetic and intercessory tribe equipped to discern the heart of God, birth His purposes through prayer and become instruments of divine intervention in their generation.</p>
       <div class="hero-row mt-2"><a class="btn btn-gold" href="founder.html">Meet our founder</a><a class="btn btn-outline-dark" href="outreach.html">Our outreach</a></div>
     </div>
     <div class="img-accent reveal"><div class="img-frame tall"><img src="assets/img/prayer-hands.jpg" alt="Hands raised in worship" loading="lazy"></div></div>
@@ -382,25 +397,65 @@ about = page_hero("vision-sunrise.jpg", "About us", "A house of prayer without w
 
 <section class="section bg-dark" id="vision">
   <div class="container">
-    <div class="section-head reveal"><h2>Mission &amp; Vision</h2></div>
-    <div class="grid-3">
-      {tile("flame", "Praying", "To raise a people of fervent, prophetic prayer who stand in the gap for families, churches, cities and nations, and who cry out for revival.")}
-      {tile("globe", "Reaching", "To take the love of Jesus beyond the prayer room — to prisons, rural communities and children who are too often overlooked.")}
-      {tile("heart", "Transforming Lives", "To see lives, families and communities transformed by the power of God, through prayer that is matched with practical compassion.")}
+    <div class="grid-2" style="align-items:stretch">
+      <div class="vm-card reveal">
+        <span class="eyebrow">Our vision</span>
+        <p class="vm-text">To raise a generation of prophetic intercessors who will discern the heart of God, birth His purposes and manifest His glory across the nations.</p>
+        <small>Habakkuk 2:1 · Isaiah 62:6–7 · Ezekiel 22:30 · Acts 2:17–18</small>
+      </div>
+      <div class="vm-card reveal">
+        <span class="eyebrow">Our mission</span>
+        <p class="vm-text">To cultivate a global community of prayer, prophetic expression, spiritual awakening and kingdom intervention, equipping believers across denominational boundaries to fulfil their spiritual callings, advance the purposes of God and demonstrate the love and power of Christ to humanity.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="section bg-blush" id="beliefs">
+<section class="section bg-blush" id="mandate">
   <div class="container">
-    <div class="section-head reveal"><h2>What we believe</h2></div>
-    <div class="grid-3">
-      {tile("book", "The Word of God", "We believe the Bible is the inspired Word of God and our foundation for faith, prayer and life.")}
-      {tile("shield", "Jesus Christ", "We believe salvation is found in Jesus Christ alone, through His death and resurrection.")}
-      {tile("flame", "The Holy Spirit", "We believe in the person and power of the Holy Spirit, who leads us in prayer and still speaks today.")}
-      {tile("ear", "Prophetic prayer", "We believe God hears and answers prayer, and that intercession shaped by His voice changes outcomes.")}
-      {tile("users", "Unity in prayer", "We believe that when believers agree in prayer across denominations and nations, heaven responds.")}
-      {tile("heart", "Faith in action", "We believe true prayer produces love in action — care for the prisoner, the poor and the fatherless.")}
+    <div class="section-head reveal"><h2>Our sevenfold mandate</h2></div>
+    <div class="mandates">
+      <div class="mandate reveal"><span class="num">1</span><div><h3>Raising a Prophetic and Intercessory Generation</h3><p>To raise, disciple and equip a consecrated people who understand the ministry of prayer, develop intimacy with God, discern His voice and faithfully stand in the gap for individuals, families, communities and nations.</p><small>Ezekiel 22:30 · 1 Timothy 2:1–4 · Isaiah 62:6–7</small></div></div>
+      <div class="mandate reveal"><span class="num">2</span><div><h3>Birthing and Sustaining Genuine Revival</h3><p>To become a spiritual catalyst for revival through persistent intercession, consecration, repentance and the stirring of spiritual hunger, raising people who will contend for a fresh move of God in the Church and across the nations.</p><small>Habakkuk 3:2 · Acts 2:1–4 · Joel 2:28–29 · 2 Chronicles 7:14</small></div></div>
+      <div class="mandate reveal"><span class="num">3</span><div><h3>Awakening Gifts, Callings and Spiritual Destinies</h3><p>To create an atmosphere of spiritual growth, impartation, discipleship and prophetic activation where believers discover, develop and deploy their God-given gifts, callings and assignments for kingdom advancement.</p><small>2 Timothy 1:6 · 1 Timothy 4:14 · Ephesians 4:11–13 · Romans 12:6–8</small></div></div>
+      <div class="mandate reveal"><span class="num">4</span><div><h3>Demonstrating the Supernatural Reality of the Risen Christ</h3><p>To cultivate a community that believes, pursues and demonstrates the supernatural ministry of the Holy Spirit through the gifts of the Spirit, divine healing, miracles, signs and wonders, bringing glory to Jesus Christ and bearing witness to His resurrection.</p><small>Mark 16:17–20 · Acts 4:29–33 · Hebrews 2:3–4 · 1 Corinthians 2:4–5</small></div></div>
+      <div class="mandate reveal"><span class="num">5</span><div><h3>Evangelism</h3><p>To labour in intercession for the salvation of the lost and translate this burden into intentional evangelism that brings people into the knowledge of Jesus Christ.</p><small>Romans 10:1 · 2 Corinthians 5:18–20 · 2 Corinthians 4:3 · Matthew 28:19–20</small></div></div>
+      <div class="mandate reveal"><span class="num">6</span><div><h3>Establishing a Global Network of Prayer and Spiritual Collaboration</h3><p>To unite believers, prayer movements, churches and ministries across denominations, cultures and nations into a global fellowship of intercessors, fostering spiritual collaboration, corporate prayer, prophetic accountability and kingdom partnerships.</p><small>John 17:20–23 · Acts 1:14 · Matthew 18:19–20 · Ephesians 4:3–6</small></div></div>
+      <div class="mandate reveal"><span class="num">7</span><div><h3>Manifesting the Compassion of Christ Through Social Impact</h3><p>To translate spiritual convictions into tangible expressions of Christ’s love by reaching the vulnerable, helping the helpless, supporting disadvantaged communities and initiating humanitarian and social transformation projects that restore dignity and demonstrate the compassion of the Gospel.</p><small>Isaiah 58:6–12 · James 1:27 · Matthew 25:35–40 · Acts 10:38</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="beliefs">
+  <div class="container">
+    <div class="section-head reveal"><h2>Our prophetic pillars</h2></div>
+    <p class="lead reveal">Prophetic Intercession is upheld and driven by seven pillars.</p>
+    <div class="grid-4 mt-2">
+      <div class="tile reveal"><div class="icon">{ICON["flame"]}</div><h3>Prayer and Intercession</h3><p>“But we will give ourselves continually to prayer, and to the ministry of the word.”</p><small class="ref">Acts 6:4 · Isaiah 62:6–7</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["shield"]}</div><h3>Consecration</h3><p>Living a life worthy and pleasing unto God.</p><small class="ref">John 17:19 · Romans 12:1 · Galatians 2:20</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["book"]}</div><h3>The Word of God</h3><p>We labour in the word of God and doctrine.</p><small class="ref">John 8:32 · Psalm 107:20</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["ear"]}</div><h3>Prophetic Awakening</h3><p>Fulfilling God’s mandate on our prophetic destinies.</p><small class="ref">1 Samuel 3:8–11 · Joel 2:28–29</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["key"]}</div><h3>Warfare</h3><p>Advancing the kingdom of God across lives and territories through warfare.</p><small class="ref">Ephesians 6:12 · 2 Corinthians 10:3–5</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["globe"]}</div><h3>Evangelism and Kingdom Service</h3><p>Taking the gospel to the ends of the earth.</p><small class="ref">Romans 10:14 · 2 Timothy 4:5</small></div>
+      <div class="tile reveal"><div class="icon">{ICON["heart"]}</div><h3>Miracles and the Supernatural</h3><p>He confirmed His word with signs following.</p><small class="ref">Mark 16:20 · 1 Corinthians 12:10 · Acts 19:11</small></div>
+      <div class="tile reveal" style="background:var(--black);color:#fff;border-color:var(--black)"><span class="eyebrow">Foundational conviction</span><h3 style="font-size:1.6rem;color:var(--gold-soft)">Everything by priesthood</h3><p style="color:rgba(255,255,255,.75)">Interdenominational, Christ-centred and led by the Spirit of God.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-dark">
+  <div class="container grid-2" style="align-items:start">
+    <div class="reveal">
+      <span class="eyebrow">Our philosophy</span>
+      <blockquote class="big-quote">“We are not raising people who merely know how to pray. We are raising people who know the God to whom they pray, discern the purposes of His heart, carry the burdens of His kingdom and become answers to the prayers they offer.”</blockquote>
+      <p class="gold" style="font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem">A people upon the watch, a people consecrated to the altar.</p>
+      <div class="slogan mt-2"><span>Raising a Tribe.</span><span>Birthing Revival.</span><span>Transforming Nations.</span></div>
+    </div>
+    <div class="anthem reveal">
+      <span class="eyebrow">Our anthem</span>
+      <p>We are prophetic intercessors<br>We walk in the supernatural<br>We are rising with power<br>We are rising with fire<br>We’ll cover all the earth</p>
+      <p>So we rise above every fear and limitations<br>We rise in battle<br>We rise in strength<br>We’ll take dominion</p>
+      <p>We are prophetic intercessors<br>We walk in the supernatural<br>Like the waters we are unstoppable<br>To dispense the Lord’s glory</p>
     </div>
   </div>
 </section>
@@ -417,7 +472,7 @@ about = page_hero("vision-sunrise.jpg", "About us", "A house of prayer without w
 </section>
 ''' + CTA
 page("about.html", "About Us — Prophetic Intercession",
-     "Learn about Prophetic Intercession: our story, mission, vision and what we believe.", about)
+     "Prophetic Intercession is a global interdenominational ministry raising a prophetic and intercessory tribe: our vision, mission, sevenfold mandate, pillars and anthem.", about)
 
 # ======================= FOUNDER =======================
 founder = '''
@@ -428,7 +483,7 @@ founder = '''
       <div class="founder-card reveal">
         <span class="eyebrow">Our founder</span>
         <h2><span class="serif">Founder &amp; Host</span>Prophetic Intercessor</h2>
-        <p>Our founder is a woman of prayer with a prophetic burden for revival. She leads Prophetic Intercession and hosts our prayer gatherings, including the 24 Hours Prayer Stretch, calling believers across nations to the place of prayer.</p>
+        <p>Our founder is a woman of prayer with a prophetic burden for revival. In the wake of 2020, God birthed in her the vision of Prophetic Intercession — and from 2023 she began gathering people on YouTube for extended hours of prayer, standing in the gap for individuals, families and nations.</p>
         <p>Her heart beats for people the world often overlooks. Under her leadership the ministry has reached into prisons, supported rural missions, and begun the work of building an orphanage.</p>
         <div class="hero-row" style="margin-top:1.2rem">
           <a class="btn btn-gold" href="events.html">Pray with her</a>
@@ -443,9 +498,10 @@ founder = '''
   <div class="container grid-2">
     <div class="reveal">
       <span class="eyebrow">Her heart</span>
-      <h2>“Prayer is where transformation begins.”</h2>
-      <p>For our founder, intercession is not an event — it is a lifestyle. She believes that when God’s people pray with His heart, He opens doors no one can shut, and sends His people through them.</p>
-      <p>That conviction shapes the ministry’s rhythm: we seek God first, we listen for His voice, and then we go — carrying hope to prisoners, missionaries in rural places and children in need of a home.</p>
+      <h2>“We are raising people who know the God to whom they pray.”</h2>
+      <p>“We are not raising people who merely know how to pray. We are raising people who know the God to whom they pray, discern the purposes of His heart, carry the burdens of His kingdom and become answers to the prayers they offer.”</p>
+      <p>Her foundational conviction is simple: <strong>everything by priesthood</strong>. The ministry seeks God first, listens for His voice, and then goes — carrying hope to prisoners, rural communities and children in need of a home.</p>
+      <a class="btn btn-yt" data-link="youtube" href="media.html">Watch on YouTube</a>
     </div>
     <div class="img-accent reveal"><div class="img-frame"><img src="assets/img/bible.jpg" alt="An open Bible" loading="lazy"></div></div>
   </div>
@@ -456,8 +512,9 @@ founder = '''
     <div class="section-head reveal"><h2>The journey so far</h2></div>
     <div class="grid-2" style="align-items:start">
       <div class="timeline reveal">
-        <div class="tl-item"><h3>Prophetic Intercession is born</h3><p>A prayer altar opens online, gathering intercessors from different nations.</p></div>
-        <div class="tl-item"><h3>Prison outreach</h3><p>The ministry takes prayer and the Gospel into prison, ministering hope to inmates.</p></div>
+        <div class="tl-item"><h3>2020 · The vision is birthed</h3><p>A deep spiritual burden for prayer, revival and a generation of prophetic intercessors.</p></div>
+        <div class="tl-item"><h3>2023 · Prayer on YouTube</h3><p>People gather online for extended hours of prayer and intercession.</p></div>
+        <div class="tl-item"><h3>2026 · Prison outreach, Douala</h3><p>The ministry takes prayer and the Gospel into prison in Douala, Cameroon.</p></div>
         <div class="tl-item"><h3>Rural missions supported</h3><p>Prophetic Intercession stands behind mission work in remote communities.</p></div>
         <div class="tl-item"><h3>24 Hours Prayer Stretch · Nov 2026</h3><p>A full day and night of prayer on Zoom, hosted by our founder — Psalm 85:6.</p></div>
         <div class="tl-item progress"><h3>Orphanage — in progress</h3><p>We are working toward a loving home for orphaned children.</p></div>
@@ -488,11 +545,11 @@ outreach = page_hero("unity-hands.jpg", "Outreach", "Prayer with hands and feet"
 <section class="section">
   <div class="container">
     <div class="outreach-row reveal" id="prison">
-      <div class="img-frame"><img src="assets/img/prison-outreach.jpg" alt="Two hands reaching toward each other" loading="lazy"></div>
+      <div class="video-frame"><button class="media-thumb video" data-yt="W36f2nty25o" aria-label="Play Prison Outreach Douala-Cameroon video"><img src="https://i.ytimg.com/vi/W36f2nty25o/hqdefault.jpg" alt="Prison Outreach Douala-Cameroon" loading="lazy"><span class="play"></span></button></div>
       <div>
-        <span class="eyebrow">Completed outreach</span>
+        <span class="eyebrow">Completed outreach · Douala, Cameroon</span>
         <h2>Prison Outreach</h2>
-        <p>Jesus said, “I was in prison, and ye came unto me” (Matthew 25:36). We have taken the love of Christ behind prison walls — praying with inmates, sharing the Gospel and reminding men and women that they are not forgotten by God.</p>
+        <p>Jesus said, “I was in prison, and ye came unto me” (Matthew 25:36). In Douala, Cameroon, we have taken the love of Christ behind prison walls — praying with inmates, sharing the Gospel and reminding men and women that they are not forgotten by God.</p>
         <ul>
           <li>Prayer and ministry of the Word with inmates</li>
           <li>Encouragement and hope for those who feel forgotten</li>
@@ -786,7 +843,7 @@ channels = page_hero("worship-night.jpg", "Channels", "Our channels",
       <div class="channel reveal"><div class="logo yt">{YT_ICON}</div><div>
         <h3>YouTube</h3>
         <p>Prayer sessions and messages you can watch again.</p>
-        <a class="btn btn-outline-dark" data-link="youtube" data-soon="Link coming soon" href="#">Subscribe on YouTube</a></div></div>
+        <a class="btn btn-yt" data-link="youtube" data-soon="Link coming soon" href="#">Subscribe on YouTube</a></div></div>
     </div>
   </div>
 </section>
@@ -814,6 +871,7 @@ media = page_hero("study.jpg", "Media", "Flyers, messages &amp; videos",
                   "Catch up on fliers, prophetic messages and recorded prayer sessions from Prophetic Intercession.") + '''
 <section class="section bg-blush">
   <div class="container">
+    <div class="yt-banner reveal"><div><strong>Prophetic Intercession on YouTube</strong><small>Prayer sessions, prophetic words and teachings · @PropheticAndIntercession</small></div><a class="btn btn-yt" data-link="youtube" href="#">Subscribe on YouTube</a></div>
     <div class="filters reveal" role="group" aria-label="Filter media">
       <button class="filter active" data-filter="all" aria-pressed="true">All</button>
       <button class="filter" data-filter="flyer" aria-pressed="false">Flyers</button>

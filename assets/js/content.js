@@ -6,7 +6,7 @@
 
 var PI_SITE = {
   whatsapp: "https://chat.whatsapp.com/L8ikJexNYyWISJi5p15JfF", // from the QR code on the 24hr Prayer Stretch flier
-  youtube: "",      // e.g. "https://www.youtube.com/@propheticintercession"
+  youtube: "https://www.youtube.com/@PropheticAndIntercession",
   tiktok: "",       // e.g. "https://www.tiktok.com/@propheticintercession"
   zoom: "",         // standing Zoom link, if there is one
   contactEmail: ""  // where prayer requests, testimonies and watch sign-ups are emailed
@@ -37,6 +37,20 @@ var PI_WORDS = [
    type: "flyer" | "video" | "message"
    video: youtube = the ID after watch?v=   (or use url for TikTok etc.) */
 var PI_MEDIA = [
+  // Videos from the ministry's YouTube channel (@PropheticAndIntercession)
+  { type: "video", title: "Understanding the Power of Priesthood", date: "2026-11-13", youtube: "tucTp7GnCZg", text: "Teaching on the ministry’s foundational conviction: everything by priesthood." },
+  { type: "video", title: "Death Has Been Swallowed Up", date: "2026-10-27", youtube: "xNMD8HumRPI" },
+  { type: "video", title: "Resurrection Power of God", date: "2026-10-25", youtube: "jBwouPXQB9E" },
+  { type: "video", title: "I Break Camp and I Break Out", date: "2026-10-20", youtube: "F0afF5TdyZc", text: "Prophetic word and prayer." },
+  { type: "video", title: "Flowing in the Prophetic", date: "2026-10-17", youtube: "TbLa9aiIARA" },
+  { type: "video", title: "When the Word Dwells in You", date: "2026-10-01", youtube: "KbVQfWFZxCU", text: "Powerful prophetic teaching." },
+  { type: "video", title: "Prison Outreach Douala-Cameroon", date: "2026-07-23", youtube: "W36f2nty25o", text: "Prophetic Intercession takes the love of Christ behind prison walls in Douala, Cameroon." },
+  { type: "video", title: "Oh Lord, Set My Life in Order for You", date: "2026-07-12", youtube: "Wnt3I8jTosg", text: "Prophetic prayers — live prayer session." },
+  { type: "video", title: "Don’t Be Moved by Giftings", date: "2026-06", youtube: "fC-RCzdncvk" },
+  { type: "video", title: "My Glory Must Manifest — Day 1: Stop the Hiding!", date: "2026-04", youtube: "twKSkp44n1Q", text: "First night of the five-day “My Glory Must Manifest” prayer series." },
+  { type: "video", title: "My Glory Must Manifest — Day 5: Grand Finale Breakthrough", date: "2026-04", youtube: "FY3Egdh5RiY" },
+  { type: "video", title: "Urgent Prophetic Word Before You Cross Over to 2026", date: "2025-12", youtube: "Dd-YtdZK7VM" },
+  { type: "video", title: "1 Hour of Prophetic Intercession and Groanings", date: "2024", youtube: "hGukZ_Xq2uo", text: "An hour of travail and intercession." },
   {
     type: "flyer",
     title: "24 Hours Prayer Stretch",
@@ -71,10 +85,13 @@ var PI_TESTIMONIES = [
     });
   }
   function fmtDate(d) {
+    d = String(d || "");
+    if (/^\d{4}$/.test(d)) return d;
+    if (/^\d{4}-\d{2}$/.test(d)) return new Date(d + "-15T12:00:00").toLocaleDateString("en-GB", { month: "short", year: "numeric" });
     var dt = new Date(d + (String(d).length === 10 ? "T12:00:00" : ""));
     return isNaN(dt) ? "" : dt.toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
   }
-  function byDateDesc(a, b) { return new Date(b.date) - new Date(a.date); }
+  function byDateDesc(a, b) { return String(b.date).localeCompare(String(a.date)); }
 
   // ---- Social links: <a data-link="whatsapp|youtube|tiktok|zoom"> ----
   document.querySelectorAll("[data-link]").forEach(function (a) {
@@ -162,12 +179,6 @@ var PI_TESTIMONIES = [
         return;
       }
       mediaEl.innerHTML = list.map(mediaCard).join("");
-      mediaEl.querySelectorAll("[data-yt]").forEach(function (b) {
-        b.addEventListener("click", function () {
-          b.outerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(b.getAttribute("data-yt")) +
-            '?autoplay=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
-        });
-      });
     };
     document.querySelectorAll("[data-filter]").forEach(function (btn) {
       btn.addEventListener("click", function () {
@@ -177,6 +188,25 @@ var PI_TESTIMONIES = [
     });
     render("all");
   }
+
+  // Latest videos on the home page
+  var latest = $("#latest-videos");
+  if (latest) {
+    var vids = PI_MEDIA.filter(function (m) { return m.type === "video"; }).sort(byDateDesc).slice(0, 3);
+    latest.innerHTML = vids.length ? vids.map(mediaCard).join("") : "";
+  }
+
+  // Click-to-play YouTube anywhere on the site (loads the player only when clicked)
+  document.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-yt]");
+    if (!b) return;
+    var f = document.createElement("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + encodeURIComponent(b.getAttribute("data-yt")) + "?autoplay=1&rel=0";
+    f.title = b.getAttribute("aria-label") || "Video";
+    f.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.allowFullscreen = true;
+    b.replaceWith(f);
+  });
 
   function mediaCard(m) {
     var media = "";
